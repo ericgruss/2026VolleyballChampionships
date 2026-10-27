@@ -1,0 +1,4 @@
+{
+  "navigationFallback": { "rewrite": "/index.html" },
+  "globalHeaders": { "Cache-Control": "public, max-age=300" }
+}
