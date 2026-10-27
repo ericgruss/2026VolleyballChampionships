@@ -1,5 +1,17 @@
 {
  "boys-soccer": {
+  "changes": {
+   "9": {
+    "line": "4:15 PM - Game 9 - Division 4 - FC Warriors (KY) vs. First Baptist Christian (OH) - Field 2",
+    "now": "Wed 4:15 PM · Field 2",
+    "was": "Wed 2:30 PM · Field 3"
+   },
+   "11": {
+    "line": "2:30 PM - Game 11 - Division 1/2 - Indy Warriors (IN) vs. Juniata Christian (PA) - Field 3",
+    "now": "Wed 2:30 PM · Field 3",
+    "was": "Wed 4:15 PM · Field 2"
+   }
+  },
   "games": {
    "1": {
     "loser": null,
@@ -184,6 +196,7 @@
   }
  },
  "girls-soccer": {
+  "changes": {},
   "games": {
    "1": {
     "loser": null,
@@ -241,10 +254,12 @@
    }
   }
  },
+ "notices": [],
  "source": "https://ncsaa.org/events/soccer-and-volleyball-championships-2026",
  "unmatched": [],
- "updated": "2026-10-27T04:52:49.935Z",
+ "updated": "2026-10-27T11:03:56.640Z",
  "volleyball": {
+  "changes": {},
   "games": {},
   "pool": {
    "p0": {
