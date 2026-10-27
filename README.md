@@ -1,4 +1,6 @@
-# NCSAA Volleyball Tracker
+# NCSAA Championship Tracker
+
+Volleyball, boys' soccer and girls' soccer for the 2026 NCSAA Soccer and Volleyball Championships.
 
 One static page. No build step, no backend. Results people tap are saved in their own browser.
 
@@ -17,8 +19,8 @@ One static page. No build step, no backend. Results people tap are saved in thei
 Quick alternative without GitHub: `npm i -g @azure/static-web-apps-cli`, then `swa deploy . --env production --deployment-token <token from the portal>`.
 
 ## Team links
-Each team has its own link: `https://vb.yourdomain.com/#christian-community-oh` (team name, lowercased, dashes).
+Each team has its own link. Volleyball: `https://brackets.webleedai.com/#christian-community-oh`. Soccer teams are prefixed: `#boys-soccer-dominion-academy-oh`, `#girls-soccer-juniata-christian-pa`. `#boys-soccer` and `#girls-soccer` open that sport's team list.
 
 ## Reuse for another tournament
-Edit the data block at the top of the `<script>` in `index.html`: `EVENT`, `POOLS`, `POOL_PLAY`, `BRACKET`, `NOTES`.
-Pool seeds are written `K#1`; winner/loser of a match is `W17` / `L17`.
+Edit the data block at the top of the `<script>` in `index.html`: `EVENT`, `SPORTS`, `POOLS`, `POOL_PLAY`, `GAMES`.
+Sources in `GAMES`: a team name, `K#1` (Pool K #1), `#1` (round robin #1), `W17` / `L17` (winner/loser of game 17).

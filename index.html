@@ -3,26 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Schedule, bracket paths and W/L tracker for every team at the 2026 NCSAA Girls' Varsity Volleyball Championships.">
+<meta name="description" content="Schedules, bracket paths, directions and a W/L tracker for every team at the 2026 NCSAA Soccer and Volleyball Championships.">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>NCSAA Volleyball Tracker</title>
+<title>NCSAA Championship Tracker</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: single narrow column. Picker = pools grid; team view = day bands, one match per row with W/L toggles */
+/* Red, white and blue: navy header band with red rule, red labels, blue for wins and selections. All text pairs meet WCAG AAA (7:1). */
 :root{
-  --bg:#f5f6f8; --card:#ffffff; --fg:#17202e; --muted:#5f6b7c; --line:#dde2e9;
-  --accent:#d4571b; --accent-soft:#fbe9df; --win:#1d7a4a; --win-soft:#e1f2e8; --loss:#b3362f; --loss-soft:#f8e3e1;
+  --bg:#ffffff; --card:#f4f7fc; --fg:#0f2347; --muted:#3d4a63; --line:#c9d3e6;
+  --accent:#a00d25; --accent-soft:#fbe6e9; --blue:#1a3f99; --navy:#0f2a5c; --band-fg:#ffffff; --band-muted:#dbe4f5; --band-accent:#ffd0d6;
+  --win:#1a3f99; --win-soft:#e4ecfa; --loss:#a00d25; --loss-soft:#fbe6e9;
+  --win-fill:#1a3f99; --loss-fill:#a00d25; --sel-fill:#1a3f99;
   --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
   --body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#11161e; --card:#1a212c; --fg:#e8ecf2; --muted:#98a3b3; --line:#2c3543;
-  --accent:#f07a3e; --accent-soft:#3a2418; --win:#4cc183; --win-soft:#173225; --loss:#ef7a72; --loss-soft:#3a1c1b; color-scheme:dark}}
+  --bg:#0b1426; --card:#13203a; --fg:#eaf0fa; --muted:#b8c6de; --line:#2c3f66;
+  --accent:#ff9eab; --accent-soft:#3a1620; --blue:#9dbbff; --navy:#13306b; --band-fg:#ffffff; --band-muted:#dbe4f5; --band-accent:#ffd0d6;
+  --win:#9dbbff; --win-soft:#16264a; --loss:#ff9eab; --loss-soft:#3a1620;
+  --win-fill:#24479f; --loss-fill:#a00d25; --sel-fill:#24479f; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#11161e; --card:#1a212c; --fg:#e8ecf2; --muted:#98a3b3; --line:#2c3543;
-  --accent:#f07a3e; --accent-soft:#3a2418; --win:#4cc183; --win-soft:#173225; --loss:#ef7a72; --loss-soft:#3a1c1b; color-scheme:dark}
+  --bg:#0b1426; --card:#13203a; --fg:#eaf0fa; --muted:#b8c6de; --line:#2c3f66;
+  --accent:#ff9eab; --accent-soft:#3a1620; --blue:#9dbbff; --navy:#13306b; --band-fg:#ffffff; --band-muted:#dbe4f5; --band-accent:#ffd0d6;
+  --win:#9dbbff; --win-soft:#16264a; --loss:#ff9eab; --loss-soft:#3a1620;
+  --win-fill:#24479f; --loss-fill:#a00d25; --sel-fill:#24479f; color-scheme:dark}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.4}
+header{background:var(--navy);color:var(--band-fg);border-radius:10px;padding:16px;border-bottom:5px solid var(--accent)}
+header .eyebrow{color:var(--band-accent)}
+header p,header .meta,header .mates{color:var(--band-muted)}
+header .linkbtn{color:var(--band-fg);border-color:rgba(255,255,255,.35)}
+header .linkbtn:hover{color:var(--band-fg);border-color:var(--band-fg)}
+header button:focus-visible{outline-color:var(--band-fg)}
 .wrap{max-width:620px;margin:0 auto;padding-block:20px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:18px}
 h1{font-family:var(--display);font-weight:700;font-size:32px;line-height:1.05;margin:0;letter-spacing:.01em;text-wrap:balance}
 h2{font-family:var(--display);font-weight:700;font-size:20px;margin:0;letter-spacing:.02em}
@@ -36,7 +49,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline
 .record b{font-family:var(--display);font-size:26px}
 .meta{color:var(--muted);font-size:13px}
 .day{display:grid;gap:8px}
-.dayhead{display:flex;justify-content:space-between;align-items:baseline;gap:8px;border-bottom:2px solid var(--fg);padding-bottom:4px}
+.dayhead{display:flex;justify-content:space-between;align-items:baseline;gap:8px;border-bottom:2px solid var(--blue);padding-bottom:4px}
 .dayhead span{color:var(--muted);font-size:13px;text-align:right}
 .match{display:grid;grid-template-columns:64px 1fr auto;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
 .match.w{background:var(--win-soft);border-color:var(--win)}
@@ -49,15 +62,18 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline
 .tag{display:inline-block;font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:1px}
 .wl{display:flex;gap:6px}
 .wl button{font:700 14px var(--display);width:36px;height:36px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--muted);cursor:pointer}
-.wl button[data-v="w"][aria-pressed="true"]{background:var(--win);border-color:var(--win);color:#fff}
-.wl button[data-v="l"][aria-pressed="true"]{background:var(--loss);border-color:var(--loss);color:#fff}
+.wl button[data-v="w"][aria-pressed="true"]{background:var(--win-fill);border-color:var(--win-fill);color:#fff}
+.wl button[data-v="l"][aria-pressed="true"]{background:var(--loss-fill);border-color:var(--loss-fill);color:#fff}
 .seeds{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 .seeds button{font-family:var(--display);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 4px;cursor:pointer;color:var(--fg);display:grid;gap:2px}
 .seeds button b{font-size:22px;line-height:1}
 .seeds button span{font-size:12px;color:var(--muted);letter-spacing:.05em}
-.seeds button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.seeds button[aria-pressed="true"]{background:var(--sel-fill);border-color:var(--sel-fill);color:#fff}
 .seeds button[aria-pressed="true"] span{color:#fff}
-.hint{font-size:13px;color:var(--muted);background:var(--accent-soft);border-radius:6px;padding:8px 10px}
+.finish{display:grid;gap:6px;padding-block:4px}
+.finishhead{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:.04em;text-transform:uppercase}
+.finishhead span{font-family:var(--body);font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);font-size:13px;margin-left:6px}
+.hint{font-size:13px;color:var(--muted);background:var(--win-soft);border-radius:6px;padding:8px 10px}
 .ref{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--card)}
 table{border-collapse:collapse;width:100%;font-size:13px;min-width:440px}
 th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
@@ -66,15 +82,27 @@ th{font-family:var(--display);font-weight:600;letter-spacing:.06em;text-transfor
 td:first-child{font-weight:700;white-space:nowrap}
 .venues{display:grid;gap:4px;font-size:13px;color:var(--muted)}
 .venues b{color:var(--fg)}
+.meta a,.venues a{color:var(--blue);font-weight:700;white-space:nowrap}
+.venue{display:grid;gap:2px}
 footer{font-size:12px;color:var(--muted);display:grid;gap:4px;border-top:1px solid var(--line);padding-top:12px}
-footer a{color:var(--muted)}
+footer a{color:var(--blue);font-weight:600}
+.srclink{display:inline-block;font-size:14px}
 /* picker */
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.tabs button{font-family:var(--body);text-align:left;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px;cursor:pointer;color:var(--fg);display:grid;gap:2px;min-width:0}
+.tabs button b{font-family:var(--display);font-size:17px;letter-spacing:.02em}
+.tabs button span{font-size:12px;color:var(--muted)}
+.tabs button[aria-pressed="true"]{background:var(--sel-fill);border-color:var(--sel-fill);color:#fff}
+.tabs button[aria-pressed="true"] span{color:#fff}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:420px){.tabs{grid-template-columns:1fr}}
+.search::placeholder{color:var(--muted);opacity:1}
 .search{width:100%;box-sizing:border-box;font:16px var(--body);padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg)}
 .pools{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
-.pool{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:grid;gap:4px}
+.pool{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--blue);border-radius:8px;padding:10px 12px;display:grid;gap:4px}
 .pool h3{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 2px;color:var(--accent)}
 .team{all:unset;cursor:pointer;padding:6px 8px;margin:0 -8px;border-radius:6px;font-weight:600;display:flex;justify-content:space-between;gap:8px}
-.team:hover,.team:focus-visible{background:var(--accent-soft)}
+.team:hover,.team:focus-visible{background:var(--win-soft)}
 .team span{color:var(--muted);font-weight:400}
 .empty{color:var(--muted);font-size:14px}
 .mates{font-size:13px;color:var(--muted)}
@@ -88,15 +116,22 @@ footer a{color:var(--muted)}
 <script>
 /* ===== Tournament data (edit this block to reuse for another event) ===== */
 const EVENT={
-  name:"NCSAA Girls' Varsity Volleyball",
-  dates:"Oct 29–31, 2026",
+  name:"NCSAA Soccer and Volleyball Championships",
   source:"https://ncsaa.org/events/soccer-and-volleyball-championships-2026",
   asOf:"Oct 26, 2026",
-  days:{thu:"Thu 10/29",fri:"Fri 10/30",sat:"Sat 10/31"},
+  days:{wed:"Wed 10/28",thu:"Thu 10/29",fri:"Fri 10/30",sat:"Sat 10/31"},
   venues:{
-    aia:{name:"Athletes in Action",addr:"1197 S Detroit St, Xenia, OH 45385"},
-    ced:{name:"Cedarville University",addr:"251 N Main St, Cedarville, OH 45314"}
+    aia:{name:"Athletes in Action",place:"Wooden Family Fieldhouse, AIA Sports Complex",addr:"1197 S Detroit St, Xenia, OH 45385"},
+    aiaf:{name:"Athletes in Action",place:"AIA Sports Complex soccer fields",addr:"1197 S Detroit St, Xenia, OH 45385"},
+    ced:{name:"Cedarville University",place:"Cedarville University",addr:"251 N Main St, Cedarville, OH 45314"}
   }
+};
+const SPORTS={
+  "volleyball":{label:"Volleyball",full:"Girls' Varsity Volleyball",dates:"Oct 29–31, 2026",days:["thu","fri","sat"],unit:"Court",word:"Match",format:"best of three",
+    notes:["The NCSAA page lists Match 44 as Loser of Match 15 vs Loser of Match 8. Match 8 is a Division 7 game, so this site uses Loser of Match 9."]},
+  "boys-soccer":{label:"Boys' Soccer",full:"Boys' Varsity Soccer",dates:"Oct 28–30, 2026",days:["wed","thu","fri"],unit:"Field",word:"Game",format:"three games per team",notes:[]},
+  "girls-soccer":{label:"Girls' Soccer",full:"Girls' Varsity Soccer",dates:"Oct 28–30, 2026",days:["wed","thu","fri"],unit:"Field",word:"Game",format:"round robin, then placement games",
+    notes:["Round robin standings use overall record, then head-to-head for a two-way tie. Three-way ties go to goals allowed, goal differential and goals scored in games among those teams, then a coin toss."]}
 };
 const POOLS={
   A:["Anderson Angels (IN)","CCAA Cougars (KY)","CVHAA Patriots (VA)","Logos Christian (IL)"],
@@ -114,7 +149,7 @@ const POOLS={
   M:["Bloomfield Christian (MI)","Mountain Mission (VA)","Our Savior New American (NY)","Sugar Creek Christian (OH)"],
   N:["Dominion Academy (OH)","Fellowship Christian (NC)","Heritage Christian (WV)","Pittsburgh Christian (PA)"]
 };
-/* Pool play: "day|time|venue|court|pool|a|b" (a,b = team index in pool) */
+/* Volleyball pool play: "day|time|venue|court|pool|a|b" (a,b = team index in pool) */
 const POOL_PLAY=`
 thu|9:00 AM|aia|1|A|2|0
 thu|9:00 AM|aia|2|A|3|1
@@ -200,9 +235,10 @@ fri|11:00 AM|ced|1|G|0|2
 fri|11:00 AM|ced|2|G|1|3
 fri|12:00 PM|ced|1|H|2|0
 fri|12:00 PM|ced|2|H|1|3`;
-/* Bracket: "id|div|round|day|time|venue|court|a|b". Sources: K#1 = Pool K #1, W17/L17 = winner/loser of Match 17.
-   round: QF, SF, CO (consolation), F (championship), T (third place), C1 (consolation 1st), C3 (consolation 3rd) */
-const BRACKET=`
+/* Games: "id|div|round|day|time|venue|court-or-field|a|b".
+   Sources: a team name; K#1 = Pool K #1; #1 = round robin #1; W17/L17 = winner/loser of game 17.
+   round: OR opening round, RR round robin, QF, SF, CS consolation semifinal, CO consolation, F championship, T third place, C1/C3 consolation 1st/3rd */
+const GAMES={volleyball:`
 5|7|QF|fri|3:00 PM|aia|1|N#3|L#4
 6|7|QF|fri|3:00 PM|aia|2|M#4|I#4
 7|7|QF|fri|3:00 PM|aia|3|M#3|K#4
@@ -286,137 +322,230 @@ D7T|7|T|sat|2:00 PM|ced|2|L40|L39
 D6C1|6|C1|sat|3:00 PM|ced|1|W45|W46
 D6C3|6|C3|sat|3:00 PM|ced|2|L46|L45
 D6F|6|F|sat|4:00 PM|ced|1|W51|W52
-D6T|6|T|sat|4:00 PM|ced|2|L52|L51`;
-const NOTES=["The NCSAA page lists Match 44 as Loser of Match 15 vs Loser of Match 8. Match 8 is a Division 7 game, so this site uses Loser of Match 9."];
+D6T|6|T|sat|4:00 PM|ced|2|L52|L51`,
+"boys-soccer":`
+1|5|OR|wed|11:00 AM|aiaf|1|Eukarya Christian (VA)|Mountain Mission (VA)
+2|5|OR|wed|11:00 AM|aiaf|2|Bishop Walsh (MD)|Community Baptist (IN)
+3|5|OR|wed|12:45 PM|aiaf|1|Veritas Christian (KY)|Cross Lanes Christian (WV)
+4|5|OR|wed|12:45 PM|aiaf|2|Plants and Pillars (PA)|Chautauqua Christian (NY)
+5|4|OR|wed|12:45 PM|aiaf|3|Lighthouse Baptist (AL)|Grace Prep (PA)
+6|4|OR|wed|12:45 PM|aiaf|4|Ohio Valley Christian (OH)|Heritage Academy (MD)
+7|1/2|OR|wed|2:30 PM|aiaf|1|Life Prep Academy (KS)|Logos Christian (IL)
+8|1/2|OR|wed|2:30 PM|aiaf|2|Dominion Academy (OH)|Forest Lake Academy (FL)
+9|4|OR|wed|2:30 PM|aiaf|3|FC Warriors (KY)|First Baptist Christian (OH)
+10|1/2|OR|wed|4:15 PM|aiaf|1|Temple Academy (TN)|Spring Valley Academy (OH)
+11|1/2|OR|wed|4:15 PM|aiaf|2|Indy Warriors (IN)|Juniata Christian (PA)
+12|4|OR|wed|4:15 PM|aiaf|3|Mars Hill Academy - A (OH)|Life Center Academy (NJ)
+13|6|OR|wed|6:00 PM|aiaf|1|Homeschool Hornets (PA)|Bloomfield Christian (MI)
+14|6|OR|wed|6:00 PM|aiaf|2|Monclova Christian (OH)|Mars Hill Academy - B (OH)
+15|3|OR|wed|6:00 PM|aiaf|3|Cincinnati Fire (OH)|Faith Christian (WV)
+16|3|OR|wed|6:00 PM|aiaf|4|Mount Airy Christian (MD)|Assumption Academy (KY)
+17|6|OR|wed|7:45 PM|aiaf|1|New Hope Christian (OH)|Berrien County Home School (MI)
+18|6|OR|wed|7:45 PM|aiaf|2|Boys Home of Virginia (VA)|Pittsburgh Christian (PA)
+19|3|OR|wed|7:45 PM|aiaf|3|Westlake Christian (IL)|Grace Academy (MD)
+20|3|OR|wed|7:45 PM|aiaf|4|Wilmington Christian (NC)|Algoma Christian (MI)
+21|4|SF|thu|9:00 AM|aiaf|1|W5|W9
+22|4|SF|thu|9:00 AM|aiaf|2|W6|W12
+23|4|CS|thu|9:00 AM|aiaf|3|L9|L5
+24|4|CS|thu|9:00 AM|aiaf|4|L12|L6
+25|5|SF|thu|10:45 AM|aiaf|1|W4|W2
+26|5|CS|thu|10:45 AM|aiaf|2|L2|L4
+27|1|SF|thu|12:30 PM|aiaf|1|W7|W10
+28|2|SF|thu|12:30 PM|aiaf|2|L10|L7
+29|5|SF|thu|12:30 PM|aiaf|3|W1|W3
+30|5|CS|thu|12:30 PM|aiaf|4|L3|L1
+31|3|SF|thu|2:15 PM|aiaf|1|W15|W19
+32|3|CS|thu|2:15 PM|aiaf|2|L19|L15
+33|1|SF|thu|2:15 PM|aiaf|3|W8|W11
+34|2|SF|thu|2:15 PM|aiaf|4|L11|L8
+35|3|SF|thu|4:00 PM|aiaf|1|W16|W20
+36|3|CS|thu|4:00 PM|aiaf|2|L20|L16
+37|6|SF|thu|4:00 PM|aiaf|3|W13|W17
+38|6|CS|thu|4:00 PM|aiaf|4|L17|L13
+39|6|SF|thu|5:45 PM|aiaf|1|W14|W18
+40|6|CS|thu|5:45 PM|aiaf|4|L18|L14
+D5F|5|F|fri|10:00 AM|aiaf|1|W29|W25
+D5T|5|T|fri|10:00 AM|aiaf|2|L25|L29
+D5C1|5|C1|fri|10:00 AM|aiaf|3|W30|W26
+D5C3|5|C3|fri|10:00 AM|aiaf|4|L26|L30
+D1F|1|F|fri|11:45 AM|aiaf|1|W27|W33
+D2F|2|F|fri|11:45 AM|aiaf|2|W28|W34
+D1T|1|T|fri|11:45 AM|aiaf|3|L33|L27
+D2T|2|T|fri|11:45 AM|aiaf|4|L34|L28
+D4F|4|F|fri|1:30 PM|aiaf|1|W21|W22
+D4T|4|T|fri|1:30 PM|aiaf|2|L22|L21
+D4C1|4|C1|fri|1:30 PM|aiaf|3|W23|W24
+D4C3|4|C3|fri|1:30 PM|aiaf|4|L24|L23
+D3F|3|F|fri|3:15 PM|aiaf|1|W31|W35
+D3C3|3|C3|fri|3:15 PM|aiaf|4|L36|L32
+D6F|6|F|fri|5:00 PM|aiaf|1|W37|W39
+D3T|3|T|fri|5:00 PM|aiaf|2|L35|L31
+D3C1|3|C1|fri|5:00 PM|aiaf|3|W32|W36
+D6C3|6|C3|fri|5:00 PM|aiaf|4|L40|L38
+D6T|6|T|fri|6:45 PM|aiaf|1|L39|L37
+D6C1|6|C1|fri|6:45 PM|aiaf|2|W38|W40`,
+"girls-soccer":`
+1||RR|wed|2:30 PM|aiaf|4|Juniata Christian (PA)|Cross Lanes Christian (WV)
+2||RR|wed|4:15 PM|aiaf|4|Cincinnati Spirit (OH)|Forest Lake Academy (FL)
+3||RR|thu|10:45 AM|aiaf|4|Juniata Christian (PA)|Cincinnati Spirit (OH)
+4||RR|thu|10:45 AM|aiaf|3|Cross Lanes Christian (WV)|Forest Lake Academy (FL)
+5||RR|thu|5:45 PM|aiaf|2|Cincinnati Spirit (OH)|Cross Lanes Christian (WV)
+6||RR|thu|5:45 PM|aiaf|3|Forest Lake Academy (FL)|Juniata Christian (PA)
+GF||F|fri|3:15 PM|aiaf|2|#1|#2
+GT||T|fri|3:15 PM|aiaf|3|#3|#4`};
 /* ===== end data ===== */
 
-const ROUND={QF:"Quarterfinal",SF:"Semifinal",CO:"Consolation",F:"Championship",T:"Third Place",C1:"Consolation 1st Place",C3:"Consolation 3rd Place"};
+const ROUND={OR:"Opening Round",RR:"Round Robin",QF:"Quarterfinal",SF:"Semifinal",CS:"Consolation Semifinal",CO:"Consolation",F:"Championship",T:"Third Place",C1:"Consolation 1st Place",C3:"Consolation 3rd Place"};
 const PP=POOL_PLAY.trim().split("\n").map((l,i)=>{const[day,time,v,ct,pool,a,b]=l.split("|");return{key:"p"+i,day,time,v,ct,pool,a:+a,b:+b}});
-const BR=BRACKET.trim().split("\n").map(l=>{const[id,div,round,day,time,v,ct,a,b]=l.split("|");return{id,div:+div,round,day,time,v,ct,a,b}});
+const G={};for(const k in GAMES)G[k]=GAMES[k].trim().split("\n").map(l=>{const[id,div,round,day,time,v,ct,a,b]=l.split("|");return{id,div,round,day,time,v,ct,a,b}});
 const slug=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
-const TEAMS=[];for(const p in POOLS)POOLS[p].forEach((n,i)=>TEAMS.push({name:n,pool:p,idx:i,slug:slug(n)}));
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const app=document.getElementById("app");
-let team=null,S={},q="";
+const short=n=>n.replace(/ \([A-Z]{2}\)$/,"");
+const isTeam=s=>!/^([A-Z]?#\d|[WL]\d+)$/.test(s);
 
+/* Teams per sport */
+const TEAMS=[];
+for(const p in POOLS)POOLS[p].forEach((n,i)=>TEAMS.push({sport:"volleyball",name:n,group:"Pool "+p,pool:p,idx:i,slug:slug(n)}));
+const DIVORDER=["1/2","3","4","5","6"];
+G["boys-soccer"].filter(g=>g.round==="OR").sort((x,y)=>DIVORDER.indexOf(x.div)-DIVORDER.indexOf(y.div)||+x.id-+y.id)
+  .forEach(g=>[g.a,g.b].forEach(n=>TEAMS.push({sport:"boys-soccer",name:n,group:"Division "+g.div,slug:"boys-soccer-"+slug(n)})));
+[...new Set(G["girls-soccer"].filter(g=>g.round==="RR").flatMap(g=>[g.a,g.b]))].sort()
+  .forEach(n=>TEAMS.push({sport:"girls-soccer",name:n,group:"Round robin",slug:"girls-soccer-"+slug(n)}));
+
+const app=document.getElementById("app");
+let team=null,sport="volleyball",S={},q="";
 function load(){try{S=JSON.parse(localStorage.getItem("vb26:"+team.slug))||{}}catch(e){S={}}}
 function save(){try{localStorage.setItem("vb26:"+team.slug,JSON.stringify(S))}catch(e){}}
 
-function srcText(s){
-  const m=/^([A-Z])#(\d)$/.exec(s);if(m)return`Pool ${m[1]} #${m[2]}`;
-  const id=s.slice(1),x=BR.find(b=>b.id===id);
-  return`${s[0]==="W"?"Winner":"Loser"} of Match ${id}`+(x?` (${shortSrc(x.a)} / ${shortSrc(x.b)})`:"");
-}
-function shortSrc(s){const m=/^([A-Z])#(\d)$/.exec(s);return m?`${m[1]} #${m[2]}`:`${s[0]}${s.slice(1)}`}
-const findBy=src=>BR.find(b=>b.a===src||b.b===src);
-const other=(m,src)=>m.a===src?m.b:m.a;
-const label=m=>`Div ${m.div} ${ROUND[m.round]}`+(/^\d+$/.test(m.id)?` · Match ${m.id}`:"");
-const where=m=>`${EVENT.venues[m.v].name} · Court ${m.ct}`;
+const mapUrl=v=>"https://www.google.com/maps/dir/?api=1&destination="+encodeURIComponent(v.place+", "+v.addr);
+const dirLink=v=>`<a href="${mapUrl(v)}" target="_blank" rel="noopener" aria-label="Driving directions to ${esc(v.place)}">Directions</a>`;
 const timeHTML=t=>{const[h,ap]=t.split(" ");return`${h}<small>${ap}</small>`};
 
-function row(key,m,opp,tag,trackable=true){
-  const v=S[key];
-  return`<div class="match ${trackable&&v?v:""} ${trackable?"":"ghost"}">
-    <div class="time">${timeHTML(m.time)}</div>
-    <div class="info"><span class="tag">${esc(tag)}</span><div class="opp">${esc(opp)}</div><div class="meta">${esc(where(m))}</div></div>
-    ${trackable?`<div class="wl"><button data-id="${key}" data-v="w" aria-pressed="${v==="w"}" aria-label="Win">W</button><button data-id="${key}" data-v="l" aria-pressed="${v==="l"}" aria-label="Loss">L</button></div>`:"<div></div>"}
-  </div>`;
+function view(sp){
+  const cfg=SPORTS[sp],games=G[sp];
+  const find=src=>games.find(g=>g.a===src||g.b===src);
+  const shortSrc=s=>{let m=/^([A-Z])#(\d)$/.exec(s);if(m)return`${m[1]} #${m[2]}`;m=/^#(\d)$/.exec(s);if(m)return`#${m[1]}`;if(/^[WL]\d+$/.test(s))return(s[0]==="W"?"Winner ":"Loser ")+s.slice(1);return short(s)};
+  const srcText=s=>{
+    let m=/^([A-Z])#(\d)$/.exec(s);if(m)return`Pool ${m[1]} #${m[2]}`;
+    m=/^#(\d)$/.exec(s);if(m)return`#${m[1]} seed`;
+    if(/^[WL]\d+$/.test(s)){const id=s.slice(1),x=games.find(b=>b.id===id);
+      return`${s[0]==="W"?"Winner":"Loser"} of ${cfg.word} ${id}`+(x?` (${shortSrc(x.a)} / ${shortSrc(x.b)})`:"")}
+    return s;
+  };
+  const label=g=>(g.div?`Div ${g.div} `:"")+ROUND[g.round]+(/^\d+$/.test(g.id)?` · ${cfg.word} ${g.id}`:"");
+  const where=(g,court)=>{const v=EVENT.venues[g.v];return`${esc(v.name)} · ${court??cfg.unit+" "+g.ct}<br>${esc(v.addr)} · ${dirLink(v)}`};
+  const keys=[];
+  const row=(key,g,opp,tag,track=true)=>{
+    if(track)keys.push(key);const v=track?S[key]:null;
+    return`<div class="match ${v||""} ${track?"":"ghost"}">
+      <div class="time">${timeHTML(g.time)}</div>
+      <div class="info"><span class="tag">${esc(tag)}</span><div class="opp">${esc(opp)}</div><div class="meta">${where(g)}</div></div>
+      ${track?`<div class="wl"><button data-id="${key}" data-v="w" aria-pressed="${v==="w"}" aria-label="Mark win">W</button><button data-id="${key}" data-v="l" aria-pressed="${v==="l"}" aria-label="Mark loss">L</button></div>`:"<div></div>"}
+    </div>`};
+  /* Follow a team through win/loss games: g = game, src = how the team is named in it, ks = state keys for each level */
+  const chain=(days,g,src,ks)=>{
+    const push=(d,h)=>(days[d]=days[d]||[]).push(h);
+    push(g.day,row(ks[0],g,"vs "+srcText(g.a===src?g.b:g.a),label(g)));
+    if(ks.length<2)return;
+    const w=find("W"+g.id),l=find("L"+g.id);if(!w&&!l)return;
+    const r=S[ks[0]];
+    if(!r){
+      if(w)push(w.day,row("",w,"vs "+srcText(w.a==="W"+g.id?w.b:w.a),"If win · "+label(w),false));
+      if(l)push(l.day,row("",l,"vs "+srcText(l.a==="L"+g.id?l.b:l.a),"If loss · "+label(l),false));
+      return;
+    }
+    const n=r==="w"?w:l;if(n)chain(days,n,(r==="w"?"W":"L")+g.id,ks.slice(1));
+  };
+  return{cfg,games,find,srcText,row,chain,keys,label};
 }
 
-function renderPicker(){
-  const f=q.trim().toLowerCase();
-  let html="";
-  for(const p in POOLS){
-    const list=TEAMS.filter(t=>t.pool===p&&(!f||t.name.toLowerCase().includes(f)));
-    if(!list.length)continue;
-    html+=`<div class="pool"><h3>Pool ${p}</h3>${list.map(t=>`<button class="team" data-team="${t.slug}">${esc(t.name.replace(/ \(([A-Z]{2})\)$/,""))}<span>${t.name.match(/\(([A-Z]{2})\)$/)?.[1]||""}</span></button>`).join("")}</div>`;
-  }
-  app.innerHTML=`<header>
-      <div class="eyebrow">${esc(EVENT.name)}</div>
-      <h1>Find your team</h1>
-      <p>${esc(EVENT.dates)} · Xenia and Cedarville, OH · pick a team to see its schedule and every bracket path</p>
-    </header>
-    <input class="search" id="search" type="search" placeholder="Search 56 teams" value="${esc(q)}" autocomplete="off">
-    <div class="pools" id="pools">${html||`<div class="empty">No team matches "${esc(q)}".</div>`}</div>
-    ${footer()}`;
-}
-
-function footer(){
-  return`<footer><div>Unofficial fan tracker. Schedule from <a href="${EVENT.source}" target="_blank" rel="noopener">ncsaa.org</a> as of ${EVENT.asOf}; check there for changes and live scores.</div>${NOTES.map(n=>`<div>${esc(n)}</div>`).join("")}<div>Results you tap are saved on this device only.</div></footer>`;
+function seedPicker(title,sub,opts,seed){
+  return`<div class="finish"><div class="finishhead">${esc(title)} <span>${esc(sub)}</span></div>
+    <div class="seeds">${opts.map(o=>`<button data-seed="${o.n}" aria-pressed="${seed===o.n}"><b>#${o.n}</b><span>${esc(o.sub)}</span></button>`).join("")}</div></div>`;
 }
 
 function renderTeam(){
-  const t=team,P=t.pool;
-  const mine=PP.filter(m=>m.pool===P&&(m.a===t.idx||m.b===t.idx));
-  let w=0,l=0;const keys=[...mine.map(m=>m.key),"qf","am","pm"];
-  keys.forEach(k=>{if(S[k]==="w")w++;if(S[k]==="l")l++});
-  const mates=POOLS[P].filter((_,i)=>i!==t.idx);
+  const t=team,sp=t.sport,V=view(sp),cfg=V.cfg,days={};
+  const push=(d,h)=>(days[d]=days[d]||[]).push(h);
+  let mates="",extra="",hints={};
+  const seed=S.seed;
 
-  const byDay={thu:[],fri:[],sat:[]};
-  mine.forEach(m=>{const o=POOLS[P][m.a===t.idx?m.b:m.a];byDay[m.day].push(row(m.key,m,"vs "+o,"Pool play"))});
-
-  // seeds and paths
-  const paths=[1,2,3,4].map(n=>{
-    const src=P+"#"+n,qf=findBy(src);
-    const win=findBy("W"+qf.id),loss=findBy("L"+qf.id);
-    return{n,src,qf,win,loss};
-  });
-  const seed=S.seed,path=seed?paths[seed-1]:null;
-  let sat="";
-  if(path){
-    byDay.fri.push(row("qf",path.qf,"vs "+srcText(other(path.qf,path.src)),label(path.qf)));
-    const qfSrcW="W"+path.qf.id,qfSrcL="L"+path.qf.id;
-    if(!S.qf){
-      sat=`<div class="hint">Mark the quarterfinal to lock in Saturday.</div>`+
-        row("am",path.win,"vs "+srcText(other(path.win,qfSrcW)),"If QF win · "+label(path.win),false)+
-        row("am",path.loss,"vs "+srcText(other(path.loss,qfSrcL)),"If QF loss · "+label(path.loss),false);
-    }else{
-      const B=S.qf==="w"?path.win:path.loss,bs=(S.qf==="w"?"W":"L")+path.qf.id;
-      sat=row("am",B,"vs "+srcText(other(B,bs)),label(B));
-      const fw=findBy("W"+B.id),fl=findBy("L"+B.id);
-      if(!S.am){
-        sat+=`<div class="match ghost"><div class="time">${timeHTML(fw.time)}</div><div class="info"><span class="tag">Then</span><div class="opp">${esc(ROUND[fw.round])} or ${esc(ROUND[fl.round])}</div><div class="meta">${esc(EVENT.venues[fw.v].name)} · Court ${fw.ct} if win, Court ${fl.ct} if loss${fw.time!==fl.time?` (${fl.time})`:""}</div></div><div></div></div>`;
-      }else{
-        const F=S.am==="w"?fw:fl,fs=(S.am==="w"?"W":"L")+B.id;
-        sat+=row("pm",F,"vs "+srcText(other(F,fs)),`Div ${F.div} ${ROUND[F.round]}`);
-      }
-    }
-  }else{
-    sat=`<div class="hint">Set the pool finish above to see Friday's quarterfinal and Saturday.</div>`;
+  if(sp==="volleyball"){
+    const P=t.pool;
+    mates=`Pool ${P}: `+POOLS[P].filter((_,i)=>i!==t.idx).join(", ");
+    PP.filter(m=>m.pool===P&&(m.a===t.idx||m.b===t.idx)).forEach(m=>push(m.day,V.row(m.key,m,"vs "+POOLS[P][m.a===t.idx?m.b:m.a],"Pool play")));
+    const paths=[1,2,3,4].map(n=>{const src=P+"#"+n,qf=V.find(src);return{n,src,qf,win:V.find("W"+qf.id),loss:V.find("L"+qf.id)}});
+    push("fri",seedPicker(`Pool ${P} finish`,"sets the bracket",paths.map(p=>({n:p.n,sub:"Div "+p.qf.div})),seed));
+    if(seed){const p=paths[seed-1];V.chain(days,p.qf,p.src,["qf","am","pm"])}
+    else hints.sat="Set the pool finish under Friday to see the quarterfinal and Saturday.";
+    const pm=m=>{const a=V.find("W"+m.id),b=V.find("L"+m.id);return a.time===b.time?a.time:`Won semi ${a.time}, cons ${b.time}`};
+    extra=`<section class="day"><div class="dayhead"><h2>All paths</h2><span>by pool finish</span></div>
+      <div class="ref"><table><thead><tr><th>Finish</th><th>Fri QF</th><th>Sat AM</th><th>Sat PM</th></tr></thead><tbody>${paths.map(p=>`<tr><td>#${p.n} · Div ${p.qf.div}</td><td>${p.qf.time} Ct ${p.qf.ct}<br>${esc(EVENT.venues[p.qf.v].name)}<br>vs ${esc(V.srcText(p.qf.a===p.src?p.qf.b:p.qf.a))}</td><td>${esc(EVENT.venues[p.win.v].name)}<br>Semi ${p.win.time}${p.loss.time!==p.win.time?`, cons ${p.loss.time}`:", cons same time"}</td><td>${pm(p.win)===pm(p.loss)?pm(p.win):`${pm(p.win)}<br>${pm(p.loss)}`}</td></tr>`).join("")}</tbody></table></div></section>`;
   }
-  const satVenue=path?EVENT.venues[path.win.v].name:"Venue depends on finish";
-  const venueOf=d=>{const vs=[...new Set([...mine.filter(m=>m.day===d).map(m=>m.v),...(d==="fri"&&path?[path.qf.v]:[])])];return vs.map(v=>EVENT.venues[v].name).join(" + ")};
+  if(sp==="boys-soccer"){
+    const g0=V.games.find(g=>g.round==="OR"&&(g.a===t.name||g.b===t.name));
+    mates=`Division ${g0.div}`+(g0.div==="1/2"?": opening-round winners play for Division 1, losers for Division 2":"");
+    V.chain(days,g0,t.name,["g1","g2","g3"]);
+  }
+  if(sp==="girls-soccer"){
+    const rr=V.games.filter(g=>g.round==="RR"&&(g.a===t.name||g.b===t.name));
+    mates="Round robin: "+TEAMS.filter(x=>x.sport===sp&&x.name!==t.name).map(x=>x.name).join(", ");
+    rr.forEach(g=>push(g.day,V.row("r"+g.id,g,"vs "+(g.a===t.name?g.b:g.a),V.label(g))));
+    push("thu",seedPicker("Final standing","sets Friday's game",[1,2,3,4].map(n=>({n,sub:n<3?"Title game":"3rd place"})),seed));
+    if(seed){const g=V.find("#"+seed);V.chain(days,g,"#"+seed,["fin"])}
+    else hints.fri="Set the final standing under Thursday to see Friday's game.";
+  }
 
-  const table=paths.map(p=>{
-    const pm=(m)=>{const a=findBy("W"+m.id),b=findBy("L"+m.id);return a.time===b.time?a.time:`${a.time} / ${b.time}`};
-    return`<tr><td>#${p.n} · Div ${p.qf.div}</td><td>${p.qf.time} Ct ${p.qf.ct}<br>${esc(EVENT.venues[p.qf.v].name)}<br>vs ${esc(srcText(other(p.qf,p.src)).replace(/ \(.*/,""))}</td><td>${esc(EVENT.venues[p.win.v].name)}<br>Semi ${p.win.time}${p.loss.time!==p.win.time?` / Cons ${p.loss.time}`:` (Cons same time)`}</td><td>${pm(p.win)===pm(p.loss)?pm(p.win):`Won semi: ${pm(p.win)}<br>Cons: ${pm(p.loss)}`}</td></tr>`;
-  }).join("");
+  let w=0,l=0;V.keys.forEach(k=>{if(S[k]==="w")w++;if(S[k]==="l")l++});
+  const dayVenue=d=>{const html=(days[d]||[]).join("");const names=Object.values(EVENT.venues).filter((v,i,a)=>a.findIndex(x=>x.name===v.name)===i&&html.includes(esc(v.addr))).map(v=>v.name);return names.join(" + ")||(d==="sat"?"Venue depends on finish":"")};
+  const sections=cfg.days.map(d=>`<section class="day"><div class="dayhead"><h2>${EVENT.days[d]}</h2><span>${esc(dayVenue(d))}</span></div>${(days[d]||[]).join("")}${hints[d]&&!(days[d]||[]).length?`<div class="hint">${esc(hints[d])}</div>`:""}</section>`).join("");
+  const usedV=[...new Set(V.games.map(g=>g.v).concat(sp==="volleyball"?["aia","ced"]:[]))];
 
   app.innerHTML=`<header>
-      <div class="toprow"><div class="eyebrow">Pool ${P} · ${esc(EVENT.name)}</div><div style="display:flex;gap:6px">${window.top===window?`<button class="linkbtn" id="share">Copy link</button>`:""}<button class="linkbtn" id="change">All teams</button></div></div>
+      <div class="toprow"><div class="eyebrow">${esc(t.group)} · NCSAA ${esc(cfg.full)}</div><div style="display:flex;gap:6px">${window.top===window?`<button class="linkbtn" id="share">Copy link</button>`:""}<button class="linkbtn" id="change">All teams</button></div></div>
       <h1>${esc(t.name)}</h1>
-      <p>${esc(EVENT.dates)} · best of three · tap W or L as results come in</p>
-      <p class="mates">Pool ${P}: ${mates.map(esc).join(", ")}</p>
+      <p>${esc(cfg.dates)} · ${esc(cfg.format)} · tap W or L as results come in</p>
+      <p class="mates">${esc(mates)}</p>
       <div class="record"><b>${w}–${l}</b><span class="meta">record</span></div>
     </header>
-    <section class="day"><div class="dayhead"><h2>${EVENT.days.thu}</h2><span>${venueOf("thu")}</span></div>${byDay.thu.join("")}</section>
-    <section class="day"><div class="dayhead"><h2>Pool ${P} finish</h2><span>sets the bracket</span></div>
-      <div class="seeds">${paths.map(p=>`<button data-seed="${p.n}" aria-pressed="${seed===p.n}"><b>#${p.n}</b><span>Div ${p.qf.div}</span></button>`).join("")}</div>
-    </section>
-    <section class="day"><div class="dayhead"><h2>${EVENT.days.fri}</h2><span>${venueOf("fri")}</span></div>${byDay.fri.join("")}</section>
-    <section class="day"><div class="dayhead"><h2>${EVENT.days.sat}</h2><span>${esc(satVenue)}</span></div>${sat}</section>
-    <section class="day"><div class="dayhead"><h2>All paths</h2><span>by pool finish</span></div>
-      <div class="ref"><table><thead><tr><th>Finish</th><th>Fri QF</th><th>Sat AM</th><th>Sat PM</th></tr></thead><tbody>${table}</tbody></table></div>
-    </section>
-    <section class="venues">${Object.values(EVENT.venues).map(v=>`<div><b>${esc(v.name)}</b> · ${esc(v.addr)}</div>`).join("")}</section>
+    ${sections}
+    ${extra}
+    <section class="venues">${usedV.map(k=>EVENT.venues[k]).map(v=>`<div class="venue"><b>${esc(v.place)}</b><span>${esc(v.addr)} · ${dirLink(v)}</span></div>`).join("")}</section>
     <button class="linkbtn" id="reset" style="justify-self:start">Clear results for this team</button>
-    ${footer()}`;
+    ${footer(cfg.notes)}`;
+}
+
+function renderPicker(){
+  const f=q.trim().toLowerCase(),cfg=SPORTS[sport];
+  const list=TEAMS.filter(t=>t.sport===sport);
+  const groups=[...new Set(list.map(t=>t.group))];
+  let html="";
+  groups.forEach(gname=>{
+    const ts=list.filter(t=>t.group===gname&&(!f||t.name.toLowerCase().includes(f)));
+    if(!ts.length)return;
+    html+=`<div class="pool"><h3>${esc(gname)}</h3>${ts.map(t=>`<button class="team" data-team="${t.slug}">${esc(short(t.name))}<span>${t.name.match(/\(([A-Z]{2})\)$/)?.[1]||""}</span></button>`).join("")}</div>`;
+  });
+  app.innerHTML=`<header>
+      <div class="eyebrow">${esc(EVENT.name)} 2026</div>
+      <h1>Find your team</h1>
+      <p>Xenia and Cedarville, OH · pick a team to see its schedule, every bracket path and directions</p>
+    </header>
+    <div class="tabs" role="group" aria-label="Sport">${Object.entries(SPORTS).map(([k,s])=>`<button data-sport="${k}" aria-pressed="${k===sport}"><b>${esc(s.label)}</b><span>${esc(s.dates.replace(", 2026",""))} · ${TEAMS.filter(t=>t.sport===k).length} teams</span></button>`).join("")}</div>
+    <label class="sr" for="search">Search teams</label>
+    <input class="search" id="search" type="search" placeholder="Search ${list.length} ${esc(cfg.label.toLowerCase())} teams" value="${esc(q)}" autocomplete="off">
+    <div class="pools" id="pools">${html||`<div class="empty">No team matches "${esc(q)}".</div>`}</div>
+    ${footer(cfg.notes)}`;
+}
+
+function footer(notes){
+  return`<footer><a class="srclink" href="${EVENT.source}" target="_blank" rel="noopener">Official NCSAA schedule and live scores</a><div>Unofficial fan tracker. Schedule copied from ncsaa.org on ${EVENT.asOf}; the official page has any changes.</div>${(notes||[]).map(n=>`<div>${esc(n)}</div>`).join("")}<div>Results you tap are saved on this device only.</div></footer>`;
 }
 
 function route(){
   const h=decodeURIComponent(location.hash.slice(1));
   team=TEAMS.find(t=>t.slug===h)||null;
-  if(team){load();renderTeam();}else renderPicker();
+  if(team){sport=team.sport;load();renderTeam();}
+  else{sport=SPORTS[h]?h:"volleyball";renderPicker();}
   window.scrollTo(0,0);
 }
 
@@ -428,11 +557,12 @@ app.addEventListener("input",e=>{
 app.addEventListener("click",e=>{
   const b=e.target.closest("button");if(!b)return;
   if(b.dataset.team){location.hash=b.dataset.team;return}
-  if(b.id==="change"){location.hash="";return}
+  if(b.dataset.sport){q="";location.hash=b.dataset.sport==="volleyball"?"":b.dataset.sport;if(b.dataset.sport==="volleyball"){sport="volleyball";renderPicker()}return}
+  if(b.id==="change"){location.hash=team.sport==="volleyball"?"":team.sport;if(team.sport==="volleyball"){team=null;sport="volleyball";renderPicker()}return}
   if(b.id==="share"){navigator.clipboard?.writeText(location.href).then(()=>{b.textContent="Copied"},()=>{b.textContent="Copy failed"});return}
-  if(b.dataset.seed){const n=+b.dataset.seed;if(S.seed===n)delete S.seed;else S.seed=n;delete S.qf;delete S.am;delete S.pm}
+  if(b.dataset.seed){const n=+b.dataset.seed;if(S.seed===n)delete S.seed;else S.seed=n;["qf","am","pm","fin"].forEach(k=>delete S[k])}
   else if(b.dataset.id){const id=b.dataset.id,v=b.dataset.v;if(S[id]===v)delete S[id];else S[id]=v;
-    if(id==="qf"){delete S.am;delete S.pm}if(id==="am")delete S.pm}
+    const order=[["qf","am","pm"],["g1","g2","g3"]];order.forEach(o=>{const i=o.indexOf(id);if(i>=0)o.slice(i+1).forEach(k=>delete S[k])})}
   else if(b.id==="reset"){S={}}
   else return;
   save();renderTeam();
