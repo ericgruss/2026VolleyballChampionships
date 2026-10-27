@@ -1,11 +1,13 @@
 name: Update tournament results
 
 # Reads posted scores from the NCSAA event page and redeploys the tracker when they change.
-# The script only does work inside the tournament window (Wed 6 AM to Sun 2 AM ET);
-# outside it each run exits in seconds. Run it by hand from the Actions tab any time.
+# It runs only on the tournament dates; the script also checks the window. Run it by hand from the Actions tab any time.
 on:
   schedule:
-    - cron: "*/10 * * * *"
+    # Every 10 minutes from Wed Oct 28 6 AM ET to Sun Nov 1 2 AM ET (times are UTC)
+    - cron: "*/10 10-23 28 10 *"
+    - cron: "*/10 * 29-31 10 *"
+    - cron: "*/10 0-6 1 11 *"
   workflow_dispatch:
     inputs:
       force:
