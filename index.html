@@ -443,7 +443,7 @@ async function loadResults(){
 /* Scores are posted winner-first; show them from this team's side */
 const mine=(score,won)=>won||!score?score:score.replace(/(\d+)\s*-\s*(\d+)/g,"$2-$1");
 const resGames=sp=>RES&&RES[sp]&&RES[sp].games||{};
-const hasScores=()=>!!RES&&["volleyball","boys-soccer","girls-soccer"].some(k=>RES[k]&&(Object.keys(RES[k].games||{}).length||Object.keys(RES[k].pool||{}).length));
+const hasScores=()=>!!RES&&["volleyball","boys-soccer","girls-soccer"].some(k=>RES[k]&&[...Object.values(RES[k].games||{}),...Object.values(RES[k].pool||{})].some(r=>r&&(r.winner||r.tie)));
 const fmtUpdated=()=>{if(!hasScores()||!RES.updated)return"";const d=new Date(RES.updated);return d.toLocaleString("en-US",{weekday:"short",hour:"numeric",minute:"2-digit"})};
 function load(){try{S=JSON.parse(localStorage.getItem("vb26:"+team.slug))||{}}catch(e){S={}}}
 function save(){try{localStorage.setItem("vb26:"+team.slug,JSON.stringify(S))}catch(e){}}
