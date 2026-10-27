@@ -15,9 +15,9 @@ export function loadData(indexHtml) {
   const ctx = {};
   vm.runInNewContext(indexHtml.slice(start, end) + ";this.D={EVENT,SPORTS,POOLS,POOL_PLAY,GAMES};", ctx);
   const { POOLS, POOL_PLAY, GAMES } = ctx.D;
-  const PP = POOL_PLAY.trim().split("\n").map((l, i) => { const [day, time, v, ct, pool, a, b] = l.split("|"); return { key: "p" + i, day, time, pool, a: +a, b: +b }; });
+  const PP = POOL_PLAY.trim().split("\n").map((l, i) => { const [day, time, v, ct, pool, a, b] = l.split("|"); return { key: "p" + i, day, time, v, ct, pool, a: +a, b: +b }; });
   const G = {};
-  for (const k in GAMES) G[k] = GAMES[k].trim().split("\n").map((l) => { const [id, div, round, day, time, v, ct, a, b] = l.split("|"); return { id, div, round, day, time, a, b }; });
+  for (const k in GAMES) G[k] = GAMES[k].trim().split("\n").map((l) => { const [id, div, round, day, time, v, ct, a, b] = l.split("|"); return { id, div, round, day, time, v, ct, a, b }; });
   const teams = {
     volleyball: Object.values(POOLS).flat(),
     "boys-soccer": [...new Set(G["boys-soccer"].filter((g) => g.round === "OR").flatMap((g) => [g.a, g.b]))],
@@ -159,13 +159,20 @@ function decide(sport, m, isRoundRobin) {
   return { winner: x > y ? "L" : y > x ? "R" : extraTime ? "L" : null, tie: false };
 }
 
+// Words that suggest NCSAA posted a schedule note (weather, delays, moves).
+const NOTICE = /postpon|cancel|delay|weather|rain\b|lightning|storm|moved to|relocat|reschedul|schedule change|updated schedule|time change/i;
+
 export function parseLines(lines) {
   const recs = [];
-  let sport = null, pending = null, day = null;
+  recs.slots = []; recs.notices = [];
+  let sport = null, pending = null, day = null, venue = null;
   const DAYS = { wednesday: "wed", thursday: "thu", friday: "fri", saturday: "sat" };
   for (const line of lines) {
     const dm = line.match(/^(Wednesday|Thursday|Friday|Saturday),/i);
-    if (dm) { day = DAYS[dm[1].toLowerCase()]; pending = null; continue; }
+    if (dm) { day = DAYS[dm[1].toLowerCase()]; venue = null; pending = null; continue; }
+    if (sport && line.length < 140 && /\bat ATHLETES IN ACTION\b/i.test(line)) { venue = "aia"; continue; }
+    if (sport && line.length < 140 && /\bat CEDARVILLE\b/i.test(line)) { venue = "ced"; continue; }
+    if (sport && NOTICE.test(line)) recs.notices.push(line);
     if (/Girls'? Varsity Soccer/i.test(line) && line.length < 60) { sport = "girls-soccer"; pending = null; continue; }
     if (/Boys'? Varsity Soccer/i.test(line) && line.length < 60) { sport = "boys-soccer"; pending = null; continue; }
     if (/Girls'? Varsity Volleyball/i.test(line) && line.length < 60) { sport = "volleyball"; pending = null; continue; }
@@ -174,13 +181,17 @@ export function parseLines(lines) {
     if (tm) {
       pending = null;
       const rest = tm[3];
+      const time = `${+tm[1].split(":")[0]}:${tm[1].split(":")[1]} ${tm[2].toUpperCase()}`;
+      const court = (rest.match(/\b(?:Court|Field)\s*(\d+)/i) || [])[1] || null;
+      const where = { day, time, court, venue: sport === "volleyball" ? venue : null };
       let ref = null;
       const pool = sport === "volleyball" && rest.match(/^Pool ([A-N])\s*-\s*/i);
       const num = rest.match(/\b(?:Match|Game)\s+(\d+)\b/i);
-      if (pool) ref = { type: "pool", pool: pool[1].toUpperCase(), day, time: `${+tm[1].split(":")[0]}:${tm[1].split(":")[1]} ${tm[2].toUpperCase()}` };
-      else if (num) ref = { type: "game", id: num[1] };
-      else { const pid = placementId(sport, rest); if (pid) ref = { type: "game", id: pid }; }
+      if (pool) ref = { type: "pool", pool: pool[1].toUpperCase(), ...where };
+      else if (num) ref = { type: "game", id: num[1], ...where };
+      else { const pid = placementId(sport, rest); if (pid) ref = { type: "game", id: pid, ...where }; }
       if (!ref) continue;
+      if (ref.type === "game") recs.slots.push({ sport, ref, line });
       const m = parseMatchup(rest, true);
       if (m) recs.push({ sport, ref, ...m, line });
       else pending = { sport, ref };
@@ -197,8 +208,22 @@ export function parseLines(lines) {
 
 /* ---------- resolve records to canonical teams and game ids ---------- */
 export function resolve(recs, D) {
-  const out = { volleyball: { pool: {}, seeds: {}, games: {} }, "boys-soccer": { games: {} }, "girls-soccer": { games: {} } };
+  const out = { volleyball: { pool: {}, seeds: {}, games: {}, changes: {} }, "boys-soccer": { games: {}, changes: {} }, "girls-soccer": { games: {}, changes: {} } };
   const unmatched = [];
+  // Compare what NCSAA lists now with the schedule this site was built from.
+  const VENUE = { aia: "Athletes in Action", aiaf: "Athletes in Action", ced: "Cedarville University" };
+  const DAYN = { wed: "Wed", thu: "Thu", fri: "Fri", sat: "Sat" };
+  const diff = (sport, key, planned, ref, line) => {
+    const was = [], now = [];
+    if (ref.day && ref.time && (ref.day !== planned.day || ref.time !== planned.time)) { was.push(`${DAYN[planned.day]} ${planned.time}`); now.push(`${DAYN[ref.day]} ${ref.time}`); }
+    if (ref.court && ref.court !== planned.ct) { const u = sport === "volleyball" ? "Court" : "Field"; was.push(`${u} ${planned.ct}`); now.push(`${u} ${ref.court}`); }
+    if (ref.venue && planned.v !== "aiaf" && ref.venue !== planned.v) { was.push(VENUE[planned.v]); now.push(VENUE[ref.venue]); }
+    if (now.length) out[sport].changes[key] = { was: was.join(" · "), now: now.join(" · "), line };
+  };
+  for (const s of recs.slots || []) {
+    const g = D.G[s.sport].find((x) => x.id === s.ref.id);
+    if (g) diff(s.sport, g.id, g, s.ref, s.line);
+  }
   const gameRecs = {};
   for (const r of recs) {
     if (r.ref.type === "pool") {
@@ -218,6 +243,7 @@ export function resolve(recs, D) {
       }
       if (!pick) { unmatched.push(r.line); continue; }
       const { pp, L, R } = pick;
+      diff("volleyball", pp.key, pp, r.ref, r.line);
       const d = decide("volleyball", r, false);
       out.volleyball.pool[pp.key] = { teams: [L, R], winner: d.winner ? (d.winner === "L" ? L : R) : null, score: r.score };
     } else {
@@ -283,7 +309,7 @@ export function resolve(recs, D) {
       if (!r.placeholder && !res[id] && (r.score || r.conn.startsWith("def"))) unmatched.push(r.line);
     }
   }
-  return { results: out, unmatched };
+  return { results: out, unmatched, notices: [...new Set(recs.notices || [])] };
 }
 
 /* ---------- stable JSON ---------- */

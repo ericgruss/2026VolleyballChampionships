@@ -32,16 +32,32 @@ else {
 
 const lines = htmlToLines(html);
 const recs = parseLines(lines);
-const { results, unmatched } = resolve(recs, D);
+const { results, unmatched, notices } = resolve(recs, D);
 
 let prev = null;
 try { prev = JSON.parse(await readFile("results.json", "utf8")); } catch {}
-const body = stable({ ...results, unmatched: [...new Set(unmatched)] });
+const body = stable({ ...results, notices, unmatched: [...new Set(unmatched)] });
 const same = prev && JSON.stringify(stable({ ...prev, updated: undefined, source: undefined })) === JSON.stringify(body);
 
 const counts = Object.entries(results).map(([k, v]) => `${k}: ${Object.keys(v.games).length} games` + (v.pool ? `, ${Object.keys(v.pool).length} pool` : "") + (v.seeds ? `, ${Object.keys(v.seeds).length} seeds` : "")).join(" | ");
 console.log(`Parsed ${recs.length} schedule lines. ${counts}`);
 if (unmatched.length) console.log(`Could not match ${unmatched.length} line(s):\n  ` + [...new Set(unmatched)].join("\n  "));
+
+/* Flag new schedule changes or notes (once each) */
+const changeKeys = (r) => r ? Object.entries(r).flatMap(([sp, v]) => Object.entries(v?.changes || {}).map(([id, c]) => `${sp}|${id}|${c.now}`)) : [];
+const prevKeys = new Set([...changeKeys(prev), ...(prev?.notices || [])]);
+const freshChanges = Object.entries(results).flatMap(([sp, v]) => Object.entries(v.changes).filter(([id, c]) => !prevKeys.has(`${sp}|${id}|${c.now}`)).map(([id, c]) => ({ sp, id, ...c })));
+const freshNotices = notices.filter((n) => !prevKeys.has(n));
+if (freshChanges.length || freshNotices.length) {
+  const label = { volleyball: "Volleyball", "boys-soccer": "Boys' soccer", "girls-soccer": "Girls' soccer" };
+  const md = ["The results updater noticed differences between the NCSAA page and the schedule this site was built from.", "",
+    ...(freshChanges.length ? ["**Schedule changes** (the site now flags these games for families):", "", ...freshChanges.map((c) => `- ${label[c.sp]} ${/^p\d+$/.test(c.id) ? "pool game" : "game " + c.id}: was ${c.was}, now **${c.now}**  \n  \`${c.line}\``), ""] : []),
+    ...(freshNotices.length ? ["**Schedule notes on the NCSAA page:**", "", ...freshNotices.map((n) => `- ${n}`), ""] : []),
+    `Check ${D.EVENT.source} and update the schedule in index.html if needed.`].join("\n");
+  await writeFile("schedule-alert.md", md);
+  console.log(md);
+  await out("alert", "true");
+}
 
 if (same) { console.log("No changes."); await out("changed", "false"); process.exit(0); }
 await writeFile("results.json", JSON.stringify(stable({ updated: now.toISOString(), source: D.EVENT.source, ...body }), null, 1) + "\n");

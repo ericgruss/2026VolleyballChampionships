@@ -36,4 +36,8 @@ pool finishes fill in automatically. Manual W/L taps still work for anything not
 
 - Run it by hand: GitHub > Actions > Update tournament results > Run workflow.
 - Lines it couldn't match confidently are listed under `unmatched` in `results.json` and in the run log; it never guesses.
+- Schedule changes: it also compares each game's posted day, time, court/field and venue with this site's schedule,
+  and watches for notes like "postponed", "delayed", "weather" or "moved to". The site flags any changed game for families,
+  and the job opens a GitHub issue (which emails you) the first time each change appears. Results keep flowing either way;
+  update the schedule in `index.html` if a change sticks.
 - Tests: `node --test scripts/results.test.mjs` (six simulated tournaments plus last year's real line formats).

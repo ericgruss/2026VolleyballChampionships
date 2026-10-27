@@ -131,3 +131,28 @@ test("name matching handles NCSAA variations and refuses ambiguity", () => {
   assert.equal(matchTeam("Indy Metro Mustangs (IN)", ["Indy Metro Mustangs - A (IN)", "Indy Metro Mustangs - B (IN)"]), null);
   assert.equal(matchTeam("Totally Different School (TX)", D.POOLS.K), null);
 });
+
+test("schedule changes and notes are detected, unchanged games are not", () => {
+  const pp = D.PP.find((p) => p.pool === "K" && p.day === "thu" && p.time === "12:00 PM");
+  const A = D.POOLS.K[pp.a], B = D.POOLS.K[pp.b];
+  const qf = D.G.volleyball.find((g) => g.id === "13");
+  const build = (poolTime, poolCourt, venueHeader, qfTime, extra = "") => `<p>Girls' Varsity Volleyball:</p>
+<p>Thursday, October 29:</p><p>Pools K, L, M, and N -- at ${venueHeader}:</p>
+${poolTime} - Pool K - ${A} vs. ${B} - Court ${poolCourt}<br>${extra}
+<p>Friday, October 30:</p><p>Pools A, B, C, D, I, J, K, L, M, and N -- at ATHLETES IN ACTION:</p>
+${qfTime} - Match 13 - <em>Division 6 Quarterfinal</em> - Court ${qf.ct}<br>Pool K - #3 vs. Pool M - #2<br>
+<p>Boys' Varsity Soccer:</p><p>Wednesday, October 28:</p>11:00 AM - Game 1 - Division 5 - Eukarya Christian (VA) vs. Mountain Mission (VA) - Field 1<br>`;
+  const run = (html) => resolve(parseLines(htmlToLines(html)), D);
+
+  const same = run(build("12:00 PM", pp.ct, "CEDARVILLE UNIVERSITY", qf.time));
+  assert.deepEqual(same.results.volleyball.changes, {});
+  assert.deepEqual(same.results["boys-soccer"].changes, {});
+  assert.deepEqual(same.notices, []);
+
+  const moved = run(build("2:30 PM", "2", "ATHLETES IN ACTION", "6:00 PM", "<p>Pool K matches moved to Athletes in Action due to weather.</p>"));
+  const c = moved.results.volleyball.changes;
+  assert.equal(c[pp.key].now, "Thu 2:30 PM · Court 2 · Athletes in Action");
+  assert.equal(c[pp.key].was, "Thu 12:00 PM · Court 1 · Cedarville University");
+  assert.equal(c["13"].now, "Fri 6:00 PM");
+  assert.equal(moved.notices.length, 1);
+});

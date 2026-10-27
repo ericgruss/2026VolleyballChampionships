@@ -78,6 +78,11 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline
 .score{font-family:var(--display);font-weight:700;font-size:15px;font-variant-numeric:tabular-nums}
 .wl button[data-v="t"][aria-pressed="true"]{background:var(--muted);border-color:var(--muted);color:var(--bg)}
 .match.t{border-color:var(--muted)}
+.official{font-size:14px;line-height:1.45;color:var(--fg);background:var(--accent-soft);border-left:4px solid var(--accent);border-radius:6px;padding:10px 12px;display:grid;gap:4px}
+.official a{color:var(--fg);font-weight:700}
+.official ul{margin:2px 0 0;padding-left:18px}
+.chg{margin-top:6px;font-size:13px;line-height:1.4;color:var(--fg);background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:4px;padding:6px 8px}
+.chg b{font-family:var(--display);letter-spacing:.04em;text-transform:uppercase;font-size:12px}
 .finish{display:grid;gap:6px;padding-block:4px}
 .finishhead{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:.04em;text-transform:uppercase}
 .finishhead span{font-family:var(--body);font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);font-size:13px;margin-left:6px}
@@ -442,6 +447,14 @@ async function loadResults(){
 }
 /* Scores are posted winner-first; show them from this team's side */
 const mine=(score,won)=>won||!score?score:score.replace(/(\d+)\s*-\s*(\d+)/g,"$2-$1");
+const resChanges=sp=>RES&&RES[sp]&&RES[sp].changes||{};
+const notices=()=>RES&&RES.notices||[];
+function officialNote(sp){
+  const n=Object.keys(resChanges(sp)).length,nt=notices();
+  const src=`<a href="${EVENT.source}" target="_blank" rel="noopener">official NCSAA schedule</a>`;
+  if(!n&&!nt.length)return`<div class="official" role="note">This schedule was copied from ncsaa.org on ${EVENT.asOf}. Games can move because of weather or other changes, so always confirm times and locations on the ${src}.</div>`;
+  return`<div class="official" role="alert"><div><b>NCSAA has posted schedule changes.</b> ${n?`${n} game${n>1?"s":""} in this sport now show${n>1?"":"s"} a different time, court or venue on ncsaa.org and ${n>1?"are":"is"} flagged below.`:""} Check the ${src} before you head out.</div>${nt.length?`<ul>${nt.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}</div>`;
+}
 const resGames=sp=>RES&&RES[sp]&&RES[sp].games||{};
 const hasScores=()=>!!RES&&["volleyball","boys-soccer","girls-soccer"].some(k=>RES[k]&&[...Object.values(RES[k].games||{}),...Object.values(RES[k].pool||{})].some(r=>r&&(r.winner||r.tie)));
 const fmtUpdated=()=>{if(!hasScores()||!RES.updated)return"";const d=new Date(RES.updated);return d.toLocaleString("en-US",{weekday:"short",hour:"numeric",minute:"2-digit"})};
@@ -470,12 +483,14 @@ function view(sp,E,OFF,me){
   const keys=[];
   const row=(key,g,opp,tag,track=true,ties=false)=>{
     if(track)keys.push(key);const v=track?E[key]:null,off=track&&OFF[key];
+    const ch=resChanges(sp)[g.key||g.id];
+    const chg=ch?`<div class="chg"><b>Schedule change</b> · NCSAA now lists ${esc(ch.now)} (was ${esc(ch.was)}). Confirm on ncsaa.org.</div>`:"";
     const btn=(val,txt,lab)=>`<button data-id="${key}" data-v="${val}" aria-pressed="${v===val}" aria-label="${lab}">${txt}</button>`;
     const right=!track?"<div></div>":off?`<div class="wl"><span class="badge ${v}" aria-label="${v==="w"?"Won":v==="l"?"Lost":"Tied"}, official">${v==="t"?"T":v.toUpperCase()}</span></div>`
       :`<div class="wl">${btn("w","W","Mark win")}${ties?btn("t","T","Mark tie"):""}${btn("l","L","Mark loss")}</div>`;
     return`<div class="match ${v||""} ${track?"":"ghost"} ${off?"official":""}">
       <div class="time">${timeHTML(g.time)}</div>
-      <div class="info"><span class="tag">${esc(tag)}${off?" · Final":""}</span><div class="opp">${esc(opp)}</div>${off&&off.score?`<div class="score">${esc(off.score)}</div>`:""}<div class="meta">${where(g)}</div></div>
+      <div class="info"><span class="tag">${esc(tag)}${off?" · Final":""}</span><div class="opp">${esc(opp)}</div>${off&&off.score?`<div class="score">${esc(off.score)}</div>`:""}<div class="meta">${where(g)}</div>${chg}</div>
       ${right}
     </div>`};
   /* Official result for this team in game id, if posted */
@@ -561,6 +576,7 @@ function renderTeam(){
       <p class="mates">${esc(mates)}</p>
       <div class="record"><b>${w}–${l}${ti?"–"+ti:""}</b><span class="meta">record${upd?` · scores updated ${esc(upd)}`:""}</span></div>
     </header>
+    ${officialNote(sp)}
     ${sections}
     ${extra}
     <section class="venues">${usedV.map(k=>EVENT.venues[k]).map(v=>`<div class="venue"><b>${esc(v.place)}</b><span>${esc(v.addr)} · ${dirLink(v)}</span></div>`).join("")}</section>
@@ -583,6 +599,7 @@ function renderPicker(){
       <h1>Find your team</h1>
       <p>Xenia and Cedarville, OH · pick a team to see its schedule, every bracket path and directions</p>
     </header>
+    ${officialNote(sport)}
     <div class="tabs" role="group" aria-label="Sport">${Object.entries(SPORTS).map(([k,s])=>`<button data-sport="${k}" aria-pressed="${k===sport}"><b>${esc(s.label)}</b><span>${esc(s.dates.replace(", 2026",""))} · ${TEAMS.filter(t=>t.sport===k).length} teams</span></button>`).join("")}</div>
     <label class="sr" for="search">Search teams</label>
     <input class="search" id="search" type="search" placeholder="Search ${list.length} ${esc(cfg.label.toLowerCase())} teams" value="${esc(q)}" autocomplete="off">
