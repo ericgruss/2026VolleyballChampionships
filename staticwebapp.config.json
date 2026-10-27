@@ -1,4 +1,19 @@
 {
-  "navigationFallback": { "rewrite": "/index.html" },
-  "globalHeaders": { "Cache-Control": "public, max-age=300" }
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": [
+      "/results.json"
+    ]
+  },
+  "globalHeaders": {
+    "Cache-Control": "public, max-age=300"
+  },
+  "routes": [
+    {
+      "route": "/results.json",
+      "headers": {
+        "Cache-Control": "no-cache"
+      }
+    }
+  ]
 }

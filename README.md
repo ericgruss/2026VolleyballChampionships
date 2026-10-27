@@ -24,3 +24,16 @@ Each team has its own link. Volleyball: `https://brackets.webleedai.com/#christi
 ## Reuse for another tournament
 Edit the data block at the top of the `<script>` in `index.html`: `EVENT`, `SPORTS`, `POOLS`, `POOL_PLAY`, `GAMES`.
 Sources in `GAMES`: a team name, `K#1` (Pool K #1), `#1` (round robin #1), `W17` / `L17` (winner/loser of game 17).
+
+## Automatic score updates
+`.github/workflows/update-results.yml` runs every 10 minutes. During the tournament window
+(Wed Oct 28, 6 AM ET to Sun Nov 1, 2 AM ET) it reads the NCSAA event page, matches posted results
+("Team A def. Team B - 25-20, 25-18") to this site's games, writes `results.json`, and redeploys when anything changed.
+Outside the window each run exits immediately.
+
+The page loads `results.json` every minute, so W/L, scores, real opponent names, pool standings and
+pool finishes fill in automatically. Manual W/L taps still work for anything not yet posted.
+
+- Run it by hand: GitHub > Actions > Update tournament results > Run workflow.
+- Lines it couldn't match confidently are listed under `unmatched` in `results.json` and in the run log; it never guesses.
+- Tests: `node --test scripts/results.test.mjs` (six simulated tournaments plus last year's real line formats).
