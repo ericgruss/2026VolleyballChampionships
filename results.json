@@ -3,67 +3,67 @@
   "changes": {},
   "games": {
    "1": {
-    "loser": null,
-    "score": "",
+    "loser": "Eukarya Christian (VA)",
+    "score": "1-0",
     "teams": [
-     "Eukarya Christian (VA)",
-     "Mountain Mission (VA)"
+     "Mountain Mission (VA)",
+     "Eukarya Christian (VA)"
     ],
-    "winner": null
+    "winner": "Mountain Mission (VA)"
    },
    "2": {
-    "loser": null,
-    "score": "",
+    "loser": "Community Baptist (IN)",
+    "score": "2-2, OT (PK - 2-1)",
     "teams": [
      "Bishop Walsh (MD)",
      "Community Baptist (IN)"
     ],
-    "winner": null
+    "winner": "Bishop Walsh (MD)"
    },
    "3": {
-    "loser": null,
-    "score": "",
+    "loser": "Veritas Christian (KY)",
+    "score": "4-0",
     "teams": [
-     "Veritas Christian (KY)",
-     "Cross Lanes Christian (WV)"
+     "Cross Lanes Christian (WV)",
+     "Veritas Christian (KY)"
     ],
-    "winner": null
+    "winner": "Cross Lanes Christian (WV)"
    },
    "4": {
-    "loser": null,
-    "score": "",
+    "loser": "Plants and Pillars (PA)",
+    "score": "0-0, OT (PK - 3-2)",
     "teams": [
-     "Plants and Pillars (PA)",
-     "Chautauqua Christian (NY)"
+     "Chautauqua Christian (NY)",
+     "Plants and Pillars (PA)"
     ],
-    "winner": null
+    "winner": "Chautauqua Christian (NY)"
    },
    "5": {
-    "loser": null,
-    "score": "",
+    "loser": "Grace Prep (PA)",
+    "score": "3-1",
     "teams": [
      "Lighthouse Baptist (AL)",
      "Grace Prep (PA)"
     ],
-    "winner": null
+    "winner": "Lighthouse Baptist (AL)"
    },
    "6": {
-    "loser": null,
-    "score": "",
+    "loser": "Ohio Valley Christian (OH)",
+    "score": "3-0",
     "teams": [
-     "Ohio Valley Christian (OH)",
-     "Heritage Academy (MD)"
+     "Heritage Academy (MD)",
+     "Ohio Valley Christian (OH)"
     ],
-    "winner": null
+    "winner": "Heritage Academy (MD)"
    },
    "7": {
-    "loser": null,
-    "score": "",
+    "loser": "Logos Christian (IL)",
+    "score": "5-1",
     "teams": [
      "Life Prep Academy (KS)",
      "Logos Christian (IL)"
     ],
-    "winner": null
+    "winner": "Life Prep Academy (KS)"
    },
    "8": {
     "loser": null,
@@ -93,13 +93,13 @@
     "winner": null
    },
    "11": {
-    "loser": null,
-    "score": "",
+    "loser": "Indy Warriors (IN)",
+    "score": "4-2",
     "teams": [
-     "Indy Warriors (IN)",
-     "Juniata Christian (PA)"
+     "Juniata Christian (PA)",
+     "Indy Warriors (IN)"
     ],
-    "winner": null
+    "winner": "Juniata Christian (PA)"
    },
    "12": {
     "loser": null,
@@ -181,6 +181,42 @@
      "Algoma Christian (MI)"
     ],
     "winner": null
+   },
+   "25": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Chautauqua Christian (NY)",
+     "Bishop Walsh (MD)"
+    ],
+    "winner": null
+   },
+   "26": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Community Baptist (IN)",
+     "Plants and Pillars (PA)"
+    ],
+    "winner": null
+   },
+   "29": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Mountain Mission (VA)",
+     "Cross Lanes Christian (WV)"
+    ],
+    "winner": null
+   },
+   "30": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Veritas Christian (KY)",
+     "Eukarya Christian (VA)"
+    ],
+    "winner": null
    }
   }
  },
@@ -188,13 +224,13 @@
   "changes": {},
   "games": {
    "1": {
-    "loser": null,
-    "score": "",
+    "loser": "Cross Lanes Christian (WV)",
+    "score": "2-1",
     "teams": [
      "Juniata Christian (PA)",
      "Cross Lanes Christian (WV)"
     ],
-    "winner": null
+    "winner": "Juniata Christian (PA)"
    },
    "2": {
     "loser": null,
@@ -246,7 +282,7 @@
  "notices": [],
  "source": "https://ncsaa.org/events/soccer-and-volleyball-championships-2026",
  "unmatched": [],
- "updated": "2026-10-27T11:06:50.678Z",
+ "updated": "2026-10-28T21:14:38.608Z",
  "volleyball": {
   "changes": {},
   "games": {},
