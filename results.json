@@ -66,31 +66,31 @@
     "winner": "Life Prep Academy (KS)"
    },
    "8": {
-    "loser": null,
-    "score": "",
+    "loser": "Dominion Academy (OH)",
+    "score": "3-2",
     "teams": [
-     "Dominion Academy (OH)",
-     "Forest Lake Academy (FL)"
+     "Forest Lake Academy (FL)",
+     "Dominion Academy (OH)"
     ],
-    "winner": null
+    "winner": "Forest Lake Academy (FL)"
    },
    "9": {
-    "loser": null,
-    "score": "",
+    "loser": "FC Warriors (KY)",
+    "score": "2-1",
     "teams": [
-     "FC Warriors (KY)",
-     "First Baptist Christian (OH)"
+     "First Baptist Christian (OH)",
+     "FC Warriors (KY)"
     ],
-    "winner": null
+    "winner": "First Baptist Christian (OH)"
    },
    "10": {
-    "loser": null,
-    "score": "",
+    "loser": "Temple Academy (TN)",
+    "score": "2-1",
     "teams": [
-     "Temple Academy (TN)",
-     "Spring Valley Academy (OH)"
+     "Spring Valley Academy (OH)",
+     "Temple Academy (TN)"
     ],
-    "winner": null
+    "winner": "Spring Valley Academy (OH)"
    },
    "11": {
     "loser": "Indy Warriors (IN)",
@@ -102,13 +102,13 @@
     "winner": "Juniata Christian (PA)"
    },
    "12": {
-    "loser": null,
-    "score": "",
+    "loser": "Life Center Academy (NJ)",
+    "score": "3-0",
     "teams": [
      "Mars Hill Academy - A (OH)",
      "Life Center Academy (NJ)"
     ],
-    "winner": null
+    "winner": "Mars Hill Academy - A (OH)"
    },
    "13": {
     "loser": null,
@@ -182,6 +182,42 @@
     ],
     "winner": null
    },
+   "21": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Lighthouse Baptist (AL)",
+     "First Baptist Christian (OH)"
+    ],
+    "winner": null
+   },
+   "22": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Heritage Academy (MD)",
+     "Mars Hill Academy - A (OH)"
+    ],
+    "winner": null
+   },
+   "23": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "FC Warriors (KY)",
+     "Grace Prep (PA)"
+    ],
+    "winner": null
+   },
+   "24": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Life Center Academy (NJ)",
+     "Ohio Valley Christian (OH)"
+    ],
+    "winner": null
+   },
    "25": {
     "loser": null,
     "score": "",
@@ -197,6 +233,24 @@
     "teams": [
      "Community Baptist (IN)",
      "Plants and Pillars (PA)"
+    ],
+    "winner": null
+   },
+   "27": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Life Prep Academy (KS)",
+     "Spring Valley Academy (OH)"
+    ],
+    "winner": null
+   },
+   "28": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Temple Academy (TN)",
+     "Logos Christian (IL)"
     ],
     "winner": null
    },
@@ -217,6 +271,24 @@
      "Eukarya Christian (VA)"
     ],
     "winner": null
+   },
+   "33": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Forest Lake Academy (FL)",
+     "Juniata Christian (PA)"
+    ],
+    "winner": null
+   },
+   "34": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Indy Warriors (IN)",
+     "Dominion Academy (OH)"
+    ],
+    "winner": null
    }
   }
  },
@@ -233,13 +305,13 @@
     "winner": "Juniata Christian (PA)"
    },
    "2": {
-    "loser": null,
-    "score": "",
+    "loser": "Forest Lake Academy (FL)",
+    "score": "4-1",
     "teams": [
      "Cincinnati Spirit (OH)",
      "Forest Lake Academy (FL)"
     ],
-    "winner": null
+    "winner": "Cincinnati Spirit (OH)"
    },
    "3": {
     "loser": null,
@@ -282,7 +354,7 @@
  "notices": [],
  "source": "https://ncsaa.org/events/soccer-and-volleyball-championships-2026",
  "unmatched": [],
- "updated": "2026-10-28T21:14:38.608Z",
+ "updated": "2026-10-29T01:02:05.517Z",
  "volleyball": {
   "changes": {},
   "games": {},
