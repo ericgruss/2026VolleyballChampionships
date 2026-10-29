@@ -111,76 +111,76 @@
     "winner": "Mars Hill Academy - A (OH)"
    },
    "13": {
-    "loser": null,
-    "score": "",
+    "loser": "Homeschool Hornets (PA)",
+    "score": "2-1",
     "teams": [
-     "Homeschool Hornets (PA)",
-     "Bloomfield Christian (MI)"
+     "Bloomfield Christian (MI)",
+     "Homeschool Hornets (PA)"
     ],
-    "winner": null
+    "winner": "Bloomfield Christian (MI)"
    },
    "14": {
-    "loser": null,
-    "score": "",
+    "loser": "Monclova Christian (OH)",
+    "score": "3-0",
     "teams": [
-     "Monclova Christian (OH)",
-     "Mars Hill Academy - B (OH)"
+     "Mars Hill Academy - B (OH)",
+     "Monclova Christian (OH)"
     ],
-    "winner": null
+    "winner": "Mars Hill Academy - B (OH)"
    },
    "15": {
-    "loser": null,
-    "score": "",
+    "loser": "Cincinnati Fire (OH)",
+    "score": "2-1",
     "teams": [
-     "Cincinnati Fire (OH)",
-     "Faith Christian (WV)"
+     "Faith Christian (WV)",
+     "Cincinnati Fire (OH)"
     ],
-    "winner": null
+    "winner": "Faith Christian (WV)"
    },
    "16": {
-    "loser": null,
-    "score": "",
+    "loser": "Mount Airy Christian (MD)",
+    "score": "2-1",
     "teams": [
-     "Mount Airy Christian (MD)",
-     "Assumption Academy (KY)"
+     "Assumption Academy (KY)",
+     "Mount Airy Christian (MD)"
     ],
-    "winner": null
+    "winner": "Assumption Academy (KY)"
    },
    "17": {
-    "loser": null,
-    "score": "",
+    "loser": "Berrien County Home School (MI)",
+    "score": "3-2 OT",
     "teams": [
      "New Hope Christian (OH)",
      "Berrien County Home School (MI)"
     ],
-    "winner": null
+    "winner": "New Hope Christian (OH)"
    },
    "18": {
-    "loser": null,
-    "score": "",
+    "loser": "Boys Home of Virginia (VA)",
+    "score": "1-0",
     "teams": [
-     "Boys Home of Virginia (VA)",
-     "Pittsburgh Christian (PA)"
+     "Pittsburgh Christian (PA)",
+     "Boys Home of Virginia (VA)"
     ],
-    "winner": null
+    "winner": "Pittsburgh Christian (PA)"
    },
    "19": {
-    "loser": null,
-    "score": "",
+    "loser": "Westlake Christian (IL)",
+    "score": "2-1",
     "teams": [
-     "Westlake Christian (IL)",
-     "Grace Academy (MD)"
+     "Grace Academy (MD)",
+     "Westlake Christian (IL)"
     ],
-    "winner": null
+    "winner": "Grace Academy (MD)"
    },
    "20": {
-    "loser": null,
-    "score": "",
+    "loser": "Algoma Christian (MI)",
+    "score": "5-0",
     "teams": [
      "Wilmington Christian (NC)",
      "Algoma Christian (MI)"
     ],
-    "winner": null
+    "winner": "Wilmington Christian (NC)"
    },
    "21": {
     "loser": null,
@@ -272,6 +272,24 @@
     ],
     "winner": null
    },
+   "31": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Faith Christian (WV)",
+     "Grace Academy (MD)"
+    ],
+    "winner": null
+   },
+   "32": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Westlake Christian (IL)",
+     "Cincinnati Fire (OH)"
+    ],
+    "winner": null
+   },
    "33": {
     "loser": null,
     "score": "",
@@ -287,6 +305,60 @@
     "teams": [
      "Indy Warriors (IN)",
      "Dominion Academy (OH)"
+    ],
+    "winner": null
+   },
+   "35": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Assumption Academy (KY)",
+     "Wilmington Christian (NC)"
+    ],
+    "winner": null
+   },
+   "36": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Algoma Christian (MI)",
+     "Mount Airy Christian (MD)"
+    ],
+    "winner": null
+   },
+   "37": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Bloomfield Christian (MI)",
+     "New Hope Christian (OH)"
+    ],
+    "winner": null
+   },
+   "38": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Berrien County Home School (MI)",
+     "Homeschool Hornets (PA)"
+    ],
+    "winner": null
+   },
+   "39": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Mars Hill Academy - B (OH)",
+     "Pittsburgh Christian (PA)"
+    ],
+    "winner": null
+   },
+   "40": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Boys Home of Virginia (VA)",
+     "Monclova Christian (OH)"
     ],
     "winner": null
    }
@@ -354,7 +426,7 @@
  "notices": [],
  "source": "https://ncsaa.org/events/soccer-and-volleyball-championships-2026",
  "unmatched": [],
- "updated": "2026-10-29T01:02:05.517Z",
+ "updated": "2026-10-29T04:40:12.789Z",
  "volleyball": {
   "changes": {},
   "games": {},
