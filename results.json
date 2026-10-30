@@ -336,31 +336,31 @@
     "winner": "New Hope Christian (OH)"
    },
    "38": {
-    "loser": null,
-    "score": "",
+    "loser": "Berrien County Home School (MI)",
+    "score": "2-1",
     "teams": [
-     "Berrien County Home School (MI)",
-     "Homeschool Hornets (PA)"
+     "Homeschool Hornets (PA)",
+     "Berrien County Home School (MI)"
     ],
-    "winner": null
+    "winner": "Homeschool Hornets (PA)"
    },
    "39": {
-    "loser": null,
-    "score": "",
+    "loser": "Mars Hill Academy - B (OH)",
+    "score": "1-0",
     "teams": [
-     "Mars Hill Academy - B (OH)",
-     "Pittsburgh Christian (PA)"
+     "Pittsburgh Christian (PA)",
+     "Mars Hill Academy - B (OH)"
     ],
-    "winner": null
+    "winner": "Pittsburgh Christian (PA)"
    },
    "40": {
-    "loser": null,
-    "score": "",
+    "loser": "Monclova Christian (OH)",
+    "score": "3-2",
     "teams": [
      "Boys Home of Virginia (VA)",
      "Monclova Christian (OH)"
     ],
-    "winner": null
+    "winner": "Boys Home of Virginia (VA)"
    },
    "D1F": {
     "loser": null,
@@ -505,6 +505,42 @@
      "Mountain Mission (VA)"
     ],
     "winner": null
+   },
+   "D6C1": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Homeschool Hornets (PA)",
+     "Boys Home of Virginia (VA)"
+    ],
+    "winner": null
+   },
+   "D6C3": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Monclova Christian (OH)",
+     "Berrien County Home School (MI)"
+    ],
+    "winner": null
+   },
+   "D6F": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "New Hope Christian (OH)",
+     "Pittsburgh Christian (PA)"
+    ],
+    "winner": null
+   },
+   "D6T": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Mars Hill Academy - B (OH)",
+     "Bloomfield Christian (MI)"
+    ],
+    "winner": null
    }
   }
  },
@@ -548,20 +584,38 @@
     "winner": "Forest Lake Academy (FL)"
    },
    "5": {
-    "loser": null,
-    "score": "",
+    "loser": "Cross Lanes Christian (WV)",
+    "score": "5-1",
     "teams": [
      "Cincinnati Spirit (OH)",
      "Cross Lanes Christian (WV)"
     ],
-    "winner": null
+    "winner": "Cincinnati Spirit (OH)"
    },
    "6": {
+    "loser": "Forest Lake Academy (FL)",
+    "score": "1-0",
+    "teams": [
+     "Juniata Christian (PA)",
+     "Forest Lake Academy (FL)"
+    ],
+    "winner": "Juniata Christian (PA)"
+   },
+   "GF": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Cincinnati Spirit (OH)",
+     "Juniata Christian (PA)"
+    ],
+    "winner": null
+   },
+   "GT": {
     "loser": null,
     "score": "",
     "teams": [
      "Forest Lake Academy (FL)",
-     "Juniata Christian (PA)"
+     "Cross Lanes Christian (WV)"
     ],
     "winner": null
    }
@@ -570,7 +624,7 @@
  "notices": [],
  "source": "https://ncsaa.org/events/soccer-and-volleyball-championships-2026",
  "unmatched": [],
- "updated": "2026-10-30T01:41:15.641Z",
+ "updated": "2026-10-30T07:45:24.698Z",
  "volleyball": {
   "changes": {},
   "games": {},
@@ -816,36 +870,36 @@
     "winner": "New Hope Christian (OH)"
    },
    "p36": {
-    "score": "",
+    "score": "2-0 (25-19, 25-21)",
     "teams": [
-     "Chautauqua Christian (NY)",
-     "Circle City Cougars (IN)"
+     "Circle City Cougars (IN)",
+     "Chautauqua Christian (NY)"
     ],
-    "winner": null
+    "winner": "Circle City Cougars (IN)"
    },
    "p37": {
-    "score": "",
+    "score": "2-0 (25-11, 25-14)",
     "teams": [
      "Mars Hill Academy - B (OH)",
      "Tri-State Christian (PA)"
     ],
-    "winner": null
+    "winner": "Mars Hill Academy - B (OH)"
    },
    "p38": {
-    "score": "",
+    "score": "2-1 (19-25, 25-21, 15-8)",
     "teams": [
-     "Cincinnati Trailblazers - B (OH)",
-     "Bishop Walsh (MD)"
+     "Bishop Walsh (MD)",
+     "Cincinnati Trailblazers - B (OH)"
     ],
-    "winner": null
+    "winner": "Bishop Walsh (MD)"
    },
    "p39": {
-    "score": "",
+    "score": "2-0 (25-19, 25-23)",
     "teams": [
      "Reimer Road Christian (OH)",
      "Monclova Christian (OH)"
     ],
-    "winner": null
+    "winner": "Reimer Road Christian (OH)"
    },
    "p4": {
     "score": "2-0 (25-17, 25-16)",
