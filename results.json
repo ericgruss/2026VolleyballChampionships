@@ -399,40 +399,40 @@
     "winner": "Indy Warriors (IN)"
    },
    "D3C1": {
-    "loser": null,
-    "score": "",
+    "loser": "Algoma Christian (MI)",
+    "score": "1-0",
     "teams": [
      "Cincinnati Fire (OH)",
      "Algoma Christian (MI)"
     ],
-    "winner": null
+    "winner": "Cincinnati Fire (OH)"
    },
    "D3C3": {
-    "loser": null,
-    "score": "",
+    "loser": "Westlake Christian (IL)",
+    "score": "2-1",
     "teams": [
      "Mount Airy Christian (MD)",
      "Westlake Christian (IL)"
     ],
-    "winner": null
+    "winner": "Mount Airy Christian (MD)"
    },
    "D3F": {
-    "loser": null,
-    "score": "",
+    "loser": "Assumption Academy (KY)",
+    "score": "2-1",
     "teams": [
      "Grace Academy (MD)",
      "Assumption Academy (KY)"
     ],
-    "winner": null
+    "winner": "Grace Academy (MD)"
    },
    "D3T": {
-    "loser": null,
-    "score": "",
+    "loser": "Faith Christian (WV)",
+    "score": "5-4",
     "teams": [
      "Wilmington Christian (NC)",
      "Faith Christian (WV)"
     ],
-    "winner": null
+    "winner": "Wilmington Christian (NC)"
    },
    "D4C1": {
     "loser": "Ohio Valley Christian (OH)",
@@ -516,22 +516,22 @@
     "winner": null
    },
    "D6C3": {
-    "loser": null,
-    "score": "",
+    "loser": "Monclova Christian (OH)",
+    "score": "4-1",
     "teams": [
-     "Monclova Christian (OH)",
-     "Berrien County Home School (MI)"
+     "Berrien County Home School (MI)",
+     "Monclova Christian (OH)"
     ],
-    "winner": null
+    "winner": "Berrien County Home School (MI)"
    },
    "D6F": {
-    "loser": null,
-    "score": "",
+    "loser": "Pittsburgh Christian (PA)",
+    "score": "2-0",
     "teams": [
      "New Hope Christian (OH)",
      "Pittsburgh Christian (PA)"
     ],
-    "winner": null
+    "winner": "New Hope Christian (OH)"
    },
    "D6T": {
     "loser": null,
@@ -602,29 +602,29 @@
     "winner": "Juniata Christian (PA)"
    },
    "GF": {
-    "loser": null,
-    "score": "",
+    "loser": "Juniata Christian (PA)",
+    "score": "1-0",
     "teams": [
      "Cincinnati Spirit (OH)",
      "Juniata Christian (PA)"
     ],
-    "winner": null
+    "winner": "Cincinnati Spirit (OH)"
    },
    "GT": {
-    "loser": null,
-    "score": "",
+    "loser": "Forest Lake Academy (FL)",
+    "score": "2-1",
     "teams": [
-     "Forest Lake Academy (FL)",
-     "Cross Lanes Christian (WV)"
+     "Cross Lanes Christian (WV)",
+     "Forest Lake Academy (FL)"
     ],
-    "winner": null
+    "winner": "Cross Lanes Christian (WV)"
    }
   }
  },
  "notices": [],
  "source": "https://ncsaa.org/events/soccer-and-volleyball-championships-2026",
  "unmatched": [],
- "updated": "2026-10-30T19:41:33.838Z",
+ "updated": "2026-10-30T23:18:25.968Z",
  "volleyball": {
   "changes": {},
   "games": {
@@ -638,85 +638,166 @@
     "winner": "Wilmington Christian (OH)"
    },
    "2": {
-    "loser": null,
-    "score": "",
+    "loser": "Westlake Christian (IL)",
+    "score": "2-1 (25-17, 17-25, 15-11)",
     "teams": [
      "Victory Christian (IN)",
      "Westlake Christian (IL)"
     ],
-    "winner": null
+    "winner": "Victory Christian (IN)"
+   },
+   "3": {
+    "loser": "Central Baptist Christian (NY)",
+    "score": "2-0 (26-24, 25-10)",
+    "teams": [
+     "Lighthouse Baptist (AL)",
+     "Central Baptist Christian (NY)"
+    ],
+    "winner": "Lighthouse Baptist (AL)"
    },
    "4": {
-    "loser": null,
-    "score": "",
+    "loser": "Portersville Christian (PA)",
+    "score": "2-0 (25-17, 25-14)",
     "teams": [
-     "Portersville Christian (PA)",
-     "Barry County Christian (MI)"
+     "Barry County Christian (MI)",
+     "Portersville Christian (PA)"
     ],
-    "winner": null
+    "winner": "Barry County Christian (MI)"
+   },
+   "5": {
+    "loser": "Pittsburgh Christian (PA)",
+    "score": "2-0 (28-26, 25-14)",
+    "teams": [
+     "Hillcrest Christian (PA)",
+     "Pittsburgh Christian (PA)"
+    ],
+    "winner": "Hillcrest Christian (PA)"
+   },
+   "6": {
+    "loser": "Tri-State Christian (PA)",
+    "score": "2-1 (22-25, 25-22, 15-12)",
+    "teams": [
+     "Our Savior New American (NY)",
+     "Tri-State Christian (PA)"
+    ],
+    "winner": "Our Savior New American (NY)"
+   },
+   "7": {
+    "loser": "Sugar Creek Christian (OH)",
+    "score": "2-0 (25-21, 25-23)",
+    "teams": [
+     "Oakdale Academy (MI)",
+     "Sugar Creek Christian (OH)"
+    ],
+    "winner": "Oakdale Academy (MI)"
+   },
+   "8": {
+    "loser": "Monclova Christian (OH)",
+    "score": "2-0 (25-20, 25-11)",
+    "teams": [
+     "Dominion Academy (OH)",
+     "Monclova Christian (OH)"
+    ],
+    "winner": "Dominion Academy (OH)"
    },
    "9": {
-    "loser": null,
-    "score": "",
+    "loser": "Crawford Christian (PA)",
+    "score": "2-1 (25-13, 21-25, 15-12)",
     "teams": [
      "Wilmington Christian (NC)",
      "Crawford Christian (PA)"
     ],
-    "winner": null
+    "winner": "Wilmington Christian (NC)"
    },
    "10": {
     "loser": null,
-    "score": "",
+    "score": "2-1 (19-25, 21-25, 15-11)",
     "teams": [
      "Lebanon Christian (OH)",
      "Faith Christian (WV)"
     ],
     "winner": null
    },
+   "11": {
+    "loser": "Bourbon Christian (KY)",
+    "score": "2-1 (14-25, 25-21, 15-13)",
+    "teams": [
+     "Fellowship Christian (NC)",
+     "Bourbon Christian (KY)"
+    ],
+    "winner": "Fellowship Christian (NC)"
+   },
+   "12": {
+    "loser": "Bloomfield Christian (MI)",
+    "score": "2-1 (21-25, 25-13, 15-7)",
+    "teams": [
+     "Mars Hill Academy - B (OH)",
+     "Bloomfield Christian (MI)"
+    ],
+    "winner": "Mars Hill Academy - B (OH)"
+   },
+   "13": {
+    "loser": "Mountain Mission (VA)",
+    "score": "2-0 (25-19, 25-13)",
+    "teams": [
+     "Community Baptist (IN)",
+     "Mountain Mission (VA)"
+    ],
+    "winner": "Community Baptist (IN)"
+   },
+   "14": {
+    "loser": "Heritage Christian (WV)",
+    "score": "2-1 (17-25, 25-23, 15-9)",
+    "teams": [
+     "Reimer Road Christian (OH)",
+     "Heritage Christian (WV)"
+    ],
+    "winner": "Reimer Road Christian (OH)"
+   },
    "15": {
-    "loser": null,
-    "score": "",
+    "loser": "FCA Bravehearts (MD)",
+    "score": "2-1 (25-17, 26-28, 15-12)",
     "teams": [
      "New Hope Christian (OH)",
      "FCA Bravehearts (MD)"
     ],
-    "winner": null
+    "winner": "New Hope Christian (OH)"
    },
    "16": {
-    "loser": null,
-    "score": "",
+    "loser": "Ridgeview Christian (VA)",
+    "score": "2-1 (21-25, 25-13, 15-7)",
     "teams": [
-     "Ridgeview Christian (VA)",
-     "Franklin Classical (TN)"
+     "Franklin Classical (TN)",
+     "Ridgeview Christian (VA)"
     ],
-    "winner": null
+    "winner": "Franklin Classical (TN)"
    },
    "17": {
-    "loser": null,
-    "score": "",
+    "loser": "Cincinnati Trailblazers - B (OH)",
+    "score": "2-0 (25-8, 25-17)",
     "teams": [
      "Circle City Cougars (IN)",
      "Cincinnati Trailblazers - B (OH)"
     ],
-    "winner": null
+    "winner": "Circle City Cougars (IN)"
    },
    "18": {
-    "loser": null,
-    "score": "",
+    "loser": "Calvary Academy (NJ)",
+    "score": "2-0 (25-13, 25-14)",
     "teams": [
      "Heritage Classical (OH)",
      "Calvary Academy (NJ)"
     ],
-    "winner": null
+    "winner": "Heritage Classical (OH)"
    },
    "19": {
-    "loser": null,
-    "score": "",
+    "loser": "Chautauqua Christian (NY)",
+    "score": "2-0 (25-23, 25-23)",
     "teams": [
      "Bishop Walsh (MD)",
      "Chautauqua Christian (NY)"
     ],
-    "winner": null
+    "winner": "Bishop Walsh (MD)"
    },
    "20": {
     "loser": null,
@@ -796,6 +877,87 @@
     "teams": [
      "Indy Metro Mustangs - A (IN)",
      "Heritage Academy (MD)"
+    ],
+    "winner": null
+   },
+   "29": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Circle City Cougars (IN)",
+     "Heritage Classical (OH)"
+    ],
+    "winner": null
+   },
+   "31": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Calvary Academy (NJ)",
+     "Cincinnati Trailblazers - B (OH)"
+    ],
+    "winner": null
+   },
+   "34": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Monclova Christian (OH)",
+     "Sugar Creek Christian (OH)"
+    ],
+    "winner": null
+   },
+   "40": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Oakdale Academy (MI)",
+     "Dominion Academy (OH)"
+    ],
+    "winner": null
+   },
+   "41": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Wilmington Christian (NC)",
+     "New Hope Christian (OH)"
+    ],
+    "winner": null
+   },
+   "42": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Lebanon Christian (OH)",
+     "Franklin Classical (TN)"
+    ],
+    "winner": null
+   },
+   "43": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Ridgeview Christian (VA)",
+     "Faith Christian (WV)"
+    ],
+    "winner": null
+   },
+   "46": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Heritage Christian (WV)",
+     "Mountain Mission (VA)"
+    ],
+    "winner": null
+   },
+   "52": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Community Baptist (IN)",
+     "Reimer Road Christian (OH)"
     ],
     "winner": null
    }
@@ -1502,17 +1664,35 @@
    "G#1": "Ridgeview Christian (VA)",
    "G#2": "FCA Bravehearts (MD)",
    "G#3": "Portersville Christian (PA)",
+   "G#4": "Central Baptist Christian (NY)",
    "H#1": "New Hope Christian (OH)",
    "H#2": "Franklin Classical (TN)",
+   "H#3": "Lighthouse Baptist (AL)",
    "H#4": "Barry County Christian (MI)",
    "I#1": "Circle City Cougars (IN)",
    "I#2": "Chautauqua Christian (NY)",
+   "I#3": "Mars Hill Academy - B (OH)",
+   "I#4": "Tri-State Christian (PA)",
    "J#1": "Bishop Walsh (MD)",
    "J#2": "Cincinnati Trailblazers - B (OH)",
+   "J#3": "Reimer Road Christian (OH)",
+   "J#4": "Monclova Christian (OH)",
    "K#1": "Christian Community (OH)",
    "K#2": "Calvary Academy (NJ)",
+   "K#3": "Community Baptist (IN)",
+   "K#4": "Oakdale Academy (MI)",
    "L#1": "Heritage Classical (OH)",
-   "L#2": "Indy Metro Mustangs - B (IN)"
+   "L#2": "Indy Metro Mustangs - B (IN)",
+   "L#3": "Bourbon Christian (KY)",
+   "L#4": "Hillcrest Christian (PA)",
+   "M#1": "Bloomfield Christian (MI)",
+   "M#2": "Mountain Mission (VA)",
+   "M#3": "Sugar Creek Christian (OH)",
+   "M#4": "Our Savior New American (NY)",
+   "N#1": "Heritage Christian (WV)",
+   "N#2": "Fellowship Christian (NC)",
+   "N#3": "Pittsburgh Christian (PA)",
+   "N#4": "Dominion Academy (OH)"
   }
  }
 }
