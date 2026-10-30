@@ -309,31 +309,31 @@
     "winner": "Dominion Academy (OH)"
    },
    "35": {
-    "loser": null,
-    "score": "",
+    "loser": "Wilmington Christian (NC)",
+    "score": "4-3",
     "teams": [
      "Assumption Academy (KY)",
      "Wilmington Christian (NC)"
     ],
-    "winner": null
+    "winner": "Assumption Academy (KY)"
    },
    "36": {
-    "loser": null,
-    "score": "",
+    "loser": "Mount Airy Christian (MD)",
+    "score": "1-0",
     "teams": [
      "Algoma Christian (MI)",
      "Mount Airy Christian (MD)"
     ],
-    "winner": null
+    "winner": "Algoma Christian (MI)"
    },
    "37": {
-    "loser": null,
-    "score": "",
+    "loser": "Bloomfield Christian (MI)",
+    "score": "0-0, OT (PK 3-1)",
     "teams": [
-     "Bloomfield Christian (MI)",
-     "New Hope Christian (OH)"
+     "New Hope Christian (OH)",
+     "Bloomfield Christian (MI)"
     ],
-    "winner": null
+    "winner": "New Hope Christian (OH)"
    },
    "38": {
     "loser": null,
@@ -395,6 +395,42 @@
     "teams": [
      "Indy Warriors (IN)",
      "Temple Academy (TN)"
+    ],
+    "winner": null
+   },
+   "D3C1": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Cincinnati Fire (OH)",
+     "Algoma Christian (MI)"
+    ],
+    "winner": null
+   },
+   "D3C3": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Mount Airy Christian (MD)",
+     "Westlake Christian (IL)"
+    ],
+    "winner": null
+   },
+   "D3F": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Grace Academy (MD)",
+     "Assumption Academy (KY)"
+    ],
+    "winner": null
+   },
+   "D3T": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Wilmington Christian (NC)",
+     "Faith Christian (WV)"
     ],
     "winner": null
    },
@@ -534,7 +570,7 @@
  "notices": [],
  "source": "https://ncsaa.org/events/soccer-and-volleyball-championships-2026",
  "unmatched": [],
- "updated": "2026-10-29T21:56:23.466Z",
+ "updated": "2026-10-30T01:41:15.641Z",
  "volleyball": {
   "changes": {},
   "games": {},
@@ -708,20 +744,20 @@
     "winner": "Mount Airy Christian (MD)"
    },
    "p28": {
-    "score": "",
+    "score": "2-0 (26-24, 25-17)",
     "teams": [
      "Faith Christian (WV)",
      "Westlake Christian (IL)"
     ],
-    "winner": null
+    "winner": "Faith Christian (WV)"
    },
    "p29": {
-    "score": "",
+    "score": "2-0 (25-11, 25-22)",
     "teams": [
      "Wilmington Christian (NC)",
      "Wilmington Christian (OH)"
     ],
-    "winner": null
+    "winner": "Wilmington Christian (NC)"
    },
    "p3": {
     "score": "2-0 (25-13, 28-26)",
@@ -732,52 +768,52 @@
     "winner": "Calumet Christian (IN)"
    },
    "p30": {
-    "score": "",
+    "score": "2-1 (21-25, 25-15, 15-7)",
     "teams": [
      "Crawford Christian (PA)",
      "Victory Christian (IN)"
     ],
-    "winner": null
+    "winner": "Crawford Christian (PA)"
    },
    "p31": {
-    "score": "",
+    "score": "2-1 (22-25, 25-19, 15-9)",
     "teams": [
      "Algoma Christian (MI)",
      "Lebanon Christian (OH)"
     ],
-    "winner": null
+    "winner": "Algoma Christian (MI)"
    },
    "p32": {
-    "score": "",
+    "score": "2-0 (25-19, 25-20)",
     "teams": [
      "FCA Bravehearts (MD)",
      "Central Baptist Christian (NY)"
     ],
-    "winner": null
+    "winner": "FCA Bravehearts (MD)"
    },
    "p33": {
-    "score": "",
+    "score": "2-1 (21-25, 25-23, 15-10)",
     "teams": [
      "Ridgeview Christian (VA)",
      "Portersville Christian (PA)"
     ],
-    "winner": null
+    "winner": "Ridgeview Christian (VA)"
    },
    "p34": {
-    "score": "",
+    "score": "2-1 (24-26, 25-17, 15-12)",
     "teams": [
      "Franklin Classical (TN)",
      "Lighthouse Baptist (AL)"
     ],
-    "winner": null
+    "winner": "Franklin Classical (TN)"
    },
    "p35": {
-    "score": "",
+    "score": "2-0 (25-17, 25-15)",
     "teams": [
      "New Hope Christian (OH)",
      "Barry County Christian (MI)"
     ],
-    "winner": null
+    "winner": "New Hope Christian (OH)"
    },
    "p36": {
     "score": "",
@@ -940,20 +976,20 @@
     "winner": "Bourbon Christian (KY)"
    },
    "p54": {
-    "score": "",
+    "score": "2-0 (25-12, 25-21)",
     "teams": [
      "Christian Community (OH)",
      "Calvary Academy (NJ)"
     ],
-    "winner": null
+    "winner": "Christian Community (OH)"
    },
    "p55": {
-    "score": "",
+    "score": "2-0 (25-14, 25-18)",
     "teams": [
-     "Oakdale Academy (MI)",
-     "Community Baptist (IN)"
+     "Community Baptist (IN)",
+     "Oakdale Academy (MI)"
     ],
-    "winner": null
+    "winner": "Community Baptist (IN)"
    },
    "p56": {
     "score": "",
