@@ -624,7 +624,7 @@
  "notices": [],
  "source": "https://ncsaa.org/events/soccer-and-volleyball-championships-2026",
  "unmatched": [],
- "updated": "2026-10-31T08:51:53.045Z",
+ "updated": "2026-10-31T15:06:37.777Z",
  "volleyball": {
   "changes": {},
   "games": {
@@ -881,58 +881,58 @@
     "winner": "Indy Metro Mustangs - A (IN)"
    },
    "29": {
-    "loser": null,
-    "score": "",
+    "loser": "Circle City Cougars (IN)",
+    "score": "2-1 (21-25, 25-17, 15-11)",
     "teams": [
-     "Circle City Cougars (IN)",
-     "Heritage Classical (OH)"
+     "Heritage Classical (OH)",
+     "Circle City Cougars (IN)"
     ],
-    "winner": null
+    "winner": "Heritage Classical (OH)"
    },
    "30": {
-    "loser": null,
-    "score": "",
+    "loser": "Bishop Walsh (MD)",
+    "score": "2-0 (25-23, 25-16)",
     "teams": [
-     "Bishop Walsh (MD)",
-     "Christian Community (OH)"
+     "Christian Community (OH)",
+     "Bishop Walsh (MD)"
     ],
-    "winner": null
+    "winner": "Christian Community (OH)"
    },
    "31": {
-    "loser": null,
-    "score": "",
+    "loser": "Cincinnati Trailblazers - B (OH)",
+    "score": "2-0 (25-14, 25-18)",
     "teams": [
      "Calvary Academy (NJ)",
      "Cincinnati Trailblazers - B (OH)"
     ],
-    "winner": null
+    "winner": "Calvary Academy (NJ)"
    },
    "32": {
-    "loser": null,
-    "score": "",
+    "loser": "Chautauqua Christian (NY)",
+    "score": "2-1 (23-25, 25-12, 15-12)",
     "teams": [
      "Indy Metro Mustangs - B (IN)",
      "Chautauqua Christian (NY)"
     ],
-    "winner": null
+    "winner": "Indy Metro Mustangs - B (IN)"
    },
    "33": {
-    "loser": null,
-    "score": "",
+    "loser": "Tri-State Christian (PA)",
+    "score": "2-0 (25-11, 25-9)",
     "teams": [
-     "Tri-State Christian (PA)",
-     "Pittsburgh Christian (PA)"
+     "Pittsburgh Christian (PA)",
+     "Tri-State Christian (PA)"
     ],
-    "winner": null
+    "winner": "Pittsburgh Christian (PA)"
    },
    "34": {
-    "loser": null,
-    "score": "",
+    "loser": "Monclova Christian (OH)",
+    "score": "2-0 (25-21, 25-18)",
     "teams": [
-     "Monclova Christian (OH)",
-     "Sugar Creek Christian (OH)"
+     "Sugar Creek Christian (OH)",
+     "Monclova Christian (OH)"
     ],
-    "winner": null
+    "winner": "Sugar Creek Christian (OH)"
    },
    "35": {
     "loser": null,
@@ -953,13 +953,13 @@
     "winner": null
    },
    "37": {
-    "loser": null,
-    "score": "",
+    "loser": "Central Baptist Christian (NY)",
+    "score": "2-0 (25-15, 25-16)",
     "teams": [
-     "Central Baptist Christian (NY)",
-     "Algoma Christian (MI)"
+     "Algoma Christian (MI)",
+     "Central Baptist Christian (NY)"
     ],
-    "winner": null
+    "winner": "Algoma Christian (MI)"
    },
    "38": {
     "loser": null,
@@ -1129,6 +1129,42 @@
     "teams": [
      "Heritage Academy (MD)",
      "Grace Academy (MD)"
+    ],
+    "winner": null
+   },
+   "D5C1": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Calvary Academy (NJ)",
+     "Indy Metro Mustangs - B (IN)"
+    ],
+    "winner": null
+   },
+   "D5C3": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Chautauqua Christian (NY)",
+     "Cincinnati Trailblazers - B (OH)"
+    ],
+    "winner": null
+   },
+   "D7C1": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Pittsburgh Christian (PA)",
+     "Sugar Creek Christian (OH)"
+    ],
+    "winner": null
+   },
+   "D7C3": {
+    "loser": null,
+    "score": "",
+    "teams": [
+     "Monclova Christian (OH)",
+     "Tri-State Christian (PA)"
     ],
     "winner": null
    }
